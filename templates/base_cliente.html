@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Proyecto ADSO | SENA{% endblock title %}</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .hero-banner {
+            background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+            color: #ffffff;
+            padding: 4rem 1rem;
+            border-radius: 0.75rem;
+        }
+        .footer-custom {
+            background-color: #212529;
+            color: #adb5bd;
+            padding: 2rem 0;
+            margin-top: 5rem;
+        }
+    </style>
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+    <!-- Barra de Navegación Pública -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/">
+                <i class="bi bi-layers-fill me-2"></i>Mi Proyecto ADSO
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navPublica" aria-controls="navPublica" aria-expanded="false" aria-label="Navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navPublica">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="/"><i class="bi bi-house-door me-1"></i>Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#catalogo"><i class="bi bi-grid-3x3-gap me-1"></i>Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#acerca"><i class="bi bi-info-circle me-1"></i>Nosotros</a></li>
+                    <li class="nav-item ms-lg-2">
+                        <a class="btn btn-outline-light btn-sm px-3 fw-semibold" href="/inventario/">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>Acceso Administrativo
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Dinámico de la Interfaz Pública -->
+    <main class="container my-4 flex-grow-1">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- Pie de Página Institucional -->
+    <footer class="footer-custom mt-auto">
+        <div class="container text-center">
+            <p class="mb-1 fw-semibold text-white">SENA Centro Minero - Regional Boyacá | Programa ADSO Ficha 3321349</p>
+            <small class="text-secondary">Desarrollo de Aplicativos Web para Control y Gestión de la Información &copy; 2026</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JavaScript Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

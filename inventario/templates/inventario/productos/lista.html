@@ -1,0 +1,49 @@
+{% extends 'base_admin.html' %}
+
+{% block title %}Catálogo de Productos | Inventario ADSO{% endblock title %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+    <div>
+        <h1 class="h2 fw-bold text-dark mb-1">{{ titulo }}</h1>
+        <p class="text-muted mb-0">{{ subtitulo }}</p>
+    </div>
+    <a href="/inventario/" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i>Volver al Dashboard
+    </a>
+</div>
+
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        {% if productos %}
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for p in productos %}
+            <div class="col">
+                <div class="card h-100 border shadow-sm">
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">{{ p.categoria.nombre|upper }}</span>
+                        <h5 class="card-title fw-bold text-dark">{{ p.nombre|capfirst }}</h5>
+                        <p class="card-text text-muted mb-1">Precio: <strong>${{ p.precio|floatformat:2 }}</strong></p>
+                        <p class="card-text">
+                            Existencias: 
+                            {% if p.stock < 10 %}
+                                <span class="badge bg-danger">{{ p.stock }} unid. (Bajo Stock)</span>
+                            {% else %}
+                                <span class="badge bg-success">{{ p.stock }} unid.</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-5 text-muted">
+            <i class="bi bi-box2 display-4 d-block mb-3 text-secondary"></i>
+            <h5>Sin productos registrados</h5>
+            <p>Utilice el panel administrativo para registrar nuevos productos con categorías.</p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

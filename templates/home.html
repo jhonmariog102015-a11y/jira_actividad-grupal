@@ -1,0 +1,82 @@
+{% extends 'base_cliente.html' %}
+
+{% block title %}Inicio | Plataforma de Gestión ADSO{% endblock title %}
+
+{% block content %}
+<div class="row align-items-center mb-5">
+    <div class="col-lg-7">
+        <div class="p-4 p-md-5 bg-white rounded-3 shadow-sm border">
+            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 fw-semibold">
+                SENA - Regional Boyacá | ADSO 3321349
+            </span>
+            <h1 class="display-5 fw-bold text-dark mb-3">{{ nombre_empresa }}</h1>
+            <p class="lead text-secondary mb-4">{{ lema }}</p>
+            <p class="text-muted">{{ descripcion }}</p>
+            <div class="d-flex gap-3 mt-4">
+                <a href="/inventario/" class="btn btn-primary btn-lg px-4 shadow">
+                    <i class="bi bi-speedometer2 me-2"></i>Ir al Dashboard Administrativo
+                </a>
+                <a href="#modulos" class="btn btn-outline-secondary btn-lg px-4">
+                    <i class="bi bi-collection me-2"></i>Ver Módulos
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 mt-4 mt-lg-0">
+        <div class="card shadow-sm border-0 bg-primary text-white p-4">
+            <div class="card-body">
+                <h4 class="card-title fw-bold mb-3"><i class="bi bi-cpu me-2"></i>Arquitectura de Software</h4>
+                <p class="card-text text-white-50">
+                    Implementación bajo el patrón <strong>Modelo-Vista-Template (MVT)</strong> con Django. 
+                    Desacoplamiento modular, aislamiento en entornos virtuales e inyección de datos con el motor DTL.
+                </p>
+                <ul class="list-unstyled mt-3 mb-0">
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>Entorno Aislado (.venv)</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>Enrutamiento Delegado (include)</li>
+                    <li class="mb-2"><i class="bi bi-check-circle-fill text-warning me-2"></i>Herencia Dual (Cliente y Admin)</li>
+                    <li><i class="bi bi-check-circle-fill text-warning me-2"></i>Estándar de la Industria</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modulos" class="my-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">Módulos del Sistema</h2>
+        <p class="text-muted">Estructura modular orientada a la alta cohesión y bajo acoplamiento.</p>
+    </div>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border">
+                <div class="card-body text-center p-4">
+                    <div class="display-5 text-primary mb-3"><i class="bi bi-box-seam"></i></div>
+                    <h5 class="card-title fw-bold">Módulo de Inventario</h5>
+                    <p class="card-text text-muted">Gestión de existencias, control de categorías, umbrales de stock mínimo y catálogo de artículos.</p>
+                    <a href="/inventario/" class="btn btn-outline-primary btn-sm px-3">Acceder a Inventario</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border">
+                <div class="card-body text-center p-4">
+                    <div class="display-5 text-success mb-3"><i class="bi bi-people"></i></div>
+                    <h5 class="card-title fw-bold">Módulo de Usuarios</h5>
+                    <p class="card-text text-muted">Control de acceso basado en roles (RBAC), autenticación, perfiles y permisos de operador.</p>
+                    <button class="btn btn-outline-secondary btn-sm px-3" disabled>En Desarrollo</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border">
+                <div class="card-body text-center p-4">
+                    <div class="display-5 text-warning mb-3"><i class="bi bi-bar-chart-line"></i></div>
+                    <h5 class="card-title fw-bold">Módulo de Reportes</h5>
+                    <p class="card-text text-muted">Generación de indicadores de desempeño, métricas gerenciales y exportación de datos.</p>
+                    <button class="btn btn-outline-secondary btn-sm px-3" disabled>En Desarrollo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,26 @@
+# Entorno Virtual Python
+.venv/
+venv/
+env/
+ENV/
+
+# Bytecode y Cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Base de datos local (desarrollo)
+db.sqlite3-journal
+
+# Archivos de IDE y sistema operativo
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs y temporales
+*.log
+scratch/
