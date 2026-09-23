@@ -4,6 +4,7 @@ Actividad: "Arquitectura Base, Enrutamiento y Plantillas" (Guía G-02)
 Programa: Análisis y Desarrollo de Software (ADSO) - SENA Regional Boyacá
 Autor: Jhon Mario Guamanzar Sierra
 Instructor: Antony Reynel Botello Herrera
+INCLUYE CAPTURAS REALES DEL CÓDIGO FUENTE DEL PROYECTO
 """
 
 import os
@@ -14,12 +15,12 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib import colors
 from reportlab.pdfgen import canvas
 from reportlab.platypus import (
-    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image, PageBreak, Flowable, KeepTogether, HRFlowable
+    SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, Image, PageBreak, Flowable
 )
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY, TA_LEFT, TA_RIGHT
 
-# Registro de páginas para la Tabla de Contenido y Listas
+# Registro de páginas dinámico para la Tabla de Contenido y Listas
 PAGE_REGISTRY = {}
 
 class PageBookmark(Flowable):
@@ -56,7 +57,6 @@ class APANumberedCanvas(canvas.Canvas):
 
     def draw_page_decorations(self, total_pages):
         self.saveState()
-        # Número de página en esquina superior derecha (a 1 pulgada = 72 pt de derecha y 40 pt del borde superior)
         self.setFont("Times-Roman", 10)
         self.setFillColor(colors.HexColor("#222222"))
         self.drawRightString(612 - 72, 792 - 45, str(self._pageNumber))
@@ -282,22 +282,23 @@ def build_table_of_contents_elements(styles):
         ("    Patrón de Arquitectura MVT (Modelo - Vista - Template)", PAGE_REGISTRY.get('sec2_3', 10), False),
         ("    Comparativa Técnica: Vistas Basadas en Funciones (FBV) vs. Clases (CBV)", PAGE_REGISTRY.get('sec2_4', 11), False),
         ("    El Puente de Comunicación: El Diccionario de Contexto y el Motor DTL", PAGE_REGISTRY.get('sec2_5', 12), False),
-        ("Capítulo III: Apropiación del Conocimiento - Implementación Práctica (Actividad 3.3)", PAGE_REGISTRY.get('cap3', 13), True),
-        ("    Aislamiento Profesional: Creación del Entorno Virtual (VENV)", PAGE_REGISTRY.get('sec3_1', 13), False),
-        ("    Inicialización del Proyecto Django con Arquitectura Limpia", PAGE_REGISTRY.get('sec3_2', 13), False),
-        ("    Configuración Regional y Directorios Globales en settings.py", PAGE_REGISTRY.get('sec3_3', 14), False),
-        ("    Creación y Registro de la Primera Aplicación Modular (inventario)", PAGE_REGISTRY.get('sec3_4', 15), False),
-        ("    Estructura Interna del Módulo y Namespacing de Plantillas", PAGE_REGISTRY.get('sec3_5', 15), False),
-        ("    Enrutamiento Desacoplado mediante include() en core/urls.py", PAGE_REGISTRY.get('sec3_6', 16), False),
-        ("    Arquitectura Visual con Herencia Dual de Plantillas y Bootstrap 5", PAGE_REGISTRY.get('sec3_7', 17), False),
-        ("    Lógica del Controlador y Modelado de Datos con el ORM", PAGE_REGISTRY.get('sec3_8', 18), False),
-        ("Capítulo IV: Transferencia del Conocimiento - Prototipo y Evidencias (Actividad 3.4)", PAGE_REGISTRY.get('cap4', 19), True),
-        ("    Puesta en Marcha y Verificación del Servidor Local", PAGE_REGISTRY.get('sec4_1', 19), False),
-        ("    Evidencias Gráficas de Navegación Pública y Administrativa", PAGE_REGISTRY.get('sec4_2', 20), False),
-        ("    Repositorio Oficial en GitHub y Control de Versiones Git", PAGE_REGISTRY.get('sec4_3', 22), False),
-        ("    Criterios de Evaluación y Lista de Chequeo de la Guía G-02", PAGE_REGISTRY.get('sec4_4', 23), False),
-        ("Conclusiones", PAGE_REGISTRY.get('conclusiones', 24), False),
-        ("Referencias Bibliográficas", PAGE_REGISTRY.get('referencias', 25), False),
+        ("Capítulo III: Apropiación del Conocimiento - Implementación Práctica (Actividad 3.3)", PAGE_REGISTRY.get('cap3', 14), True),
+        ("    Aislamiento Profesional: Creación del Entorno Virtual (VENV)", PAGE_REGISTRY.get('sec3_1', 14), False),
+        ("    Inicialización del Proyecto Django con Arquitectura Limpia", PAGE_REGISTRY.get('sec3_2', 14), False),
+        ("    Configuración Regional y Directorios Globales en settings.py", PAGE_REGISTRY.get('sec3_3', 15), False),
+        ("    Creación y Registro de la Primera Aplicación Modular (inventario)", PAGE_REGISTRY.get('sec3_4', 16), False),
+        ("    Estructura Interna del Módulo y Namespacing de Plantillas", PAGE_REGISTRY.get('sec3_5', 16), False),
+        ("    Enrutamiento Desacoplado mediante include() en core/urls.py", PAGE_REGISTRY.get('sec3_6', 17), False),
+        ("    Lógica del Controlador y Diccionario de Contexto en views.py", PAGE_REGISTRY.get('sec3_7', 18), False),
+        ("    Modelado de Datos Relacional y Persistencia con el ORM", PAGE_REGISTRY.get('sec3_8', 19), False),
+        ("    Arquitectura Visual con Herencia Dual de Plantillas y Bootstrap 5", PAGE_REGISTRY.get('sec3_9', 20), False),
+        ("Capítulo IV: Transferencia del Conocimiento - Prototipo y Evidencias (Actividad 3.4)", PAGE_REGISTRY.get('cap4', 21), True),
+        ("    Puesta en Marcha y Verificación del Servidor Local", PAGE_REGISTRY.get('sec4_1', 21), False),
+        ("    Evidencias Gráficas de Navegación Pública y Administrativa", PAGE_REGISTRY.get('sec4_2', 22), False),
+        ("    Repositorio Oficial en GitHub y Control de Versiones Git", PAGE_REGISTRY.get('sec4_3', 24), False),
+        ("    Criterios de Evaluación y Lista de Chequeo de la Guía G-02", PAGE_REGISTRY.get('sec4_4', 25), False),
+        ("Conclusiones", PAGE_REGISTRY.get('conclusiones', 26), False),
+        ("Referencias Bibliográficas", PAGE_REGISTRY.get('referencias', 27), False),
     ]
 
     table_rows = []
@@ -325,19 +326,22 @@ def build_list_of_tables_figures(styles):
         ("Tabla 1. Matriz Comparativa entre el Patrón MVT y el Patrón MVC Clásico", PAGE_REGISTRY.get('tab1', 10)),
         ("Tabla 2. Comparativa Técnica: Vistas Basadas en Funciones (FBV) vs. Clases (CBV)", PAGE_REGISTRY.get('tab2', 11)),
         ("Tabla 3. Herramientas y Sintaxis Esencial del Django Template Language (DTL)", PAGE_REGISTRY.get('tab3', 12)),
-        ("Tabla 4. Filtros DTL más Utilizados en el Proyecto Formativo", PAGE_REGISTRY.get('tab4', 12)),
-        ("Tabla 5. Matriz de Criterios de Evaluación de la Guía de Aprendizaje G-02", PAGE_REGISTRY.get('tab5', 23)),
+        ("Tabla 4. Filtros DTL más Utilizados en el Proyecto Formativo", PAGE_REGISTRY.get('tab4', 13)),
+        ("Tabla 5. Matriz de Criterios de Evaluación de la Guía de Aprendizaje G-02", PAGE_REGISTRY.get('tab5', 25)),
     ]
 
     figures_data = [
-        ("Figura 1. Entorno de Desarrollo VS Code con la Arquitectura de Directorios Modular", PAGE_REGISTRY.get('fig1', 9)),
-        ("Figura 2. Diagrama de Flujo y Arquitectura del Patrón MVT en Django", PAGE_REGISTRY.get('fig2', 10)),
-        ("Figura 3. Consola Terminal con Entorno Virtual (.venv) y Servidor Django Activo", PAGE_REGISTRY.get('fig3', 19)),
-        ("Figura 4. Interfaz Pública de Usuario basada en base_cliente.html y Bootstrap 5", PAGE_REGISTRY.get('fig4', 20)),
-        ("Figura 5. Dashboard Administrativo del Módulo de Inventario con base_admin.html", PAGE_REGISTRY.get('fig5', 21)),
-        ("Figura 6. Catálogo de Existencias con Namespacing de Plantillas en Django", PAGE_REGISTRY.get('fig6', 21)),
-        ("Figura 7. Panel Administrativo Nativo de Django con Modelos Registrados", PAGE_REGISTRY.get('fig7', 22)),
-        ("Figura 8. Repositorio Oficial en GitHub con el Código Fuente del Proyecto", PAGE_REGISTRY.get('fig8', 22)),
+        ("Figura 1. Diagrama de Flujo y Arquitectura del Patrón MVT en Django", PAGE_REGISTRY.get('fig1', 10)),
+        ("Figura 2. Código Fuente Real: Configuración Regional y Módulos en core/settings.py", PAGE_REGISTRY.get('fig2', 15)),
+        ("Figura 3. Código Fuente Real: Enrutamiento Modular Desacoplado con include()", PAGE_REGISTRY.get('fig3', 17)),
+        ("Figura 4. Código Fuente Real: Vista Controladora e Inyección de Contexto en views.py", PAGE_REGISTRY.get('fig4', 18)),
+        ("Figura 5. Código Fuente Real: Modelos Relacionales y Persistencia ORM en models.py", PAGE_REGISTRY.get('fig5', 19)),
+        ("Figura 6. Código Fuente Real: Plantilla DTL con Herencia Dual en index.html", PAGE_REGISTRY.get('fig6', 20)),
+        ("Figura 7. Consola Terminal con Entorno Virtual (.venv) y Servidor Django Activo", PAGE_REGISTRY.get('fig7', 21)),
+        ("Figura 8. Interfaz Pública de Usuario basada en base_cliente.html y Bootstrap 5", PAGE_REGISTRY.get('fig8', 22)),
+        ("Figura 9. Dashboard Administrativo del Módulo de Inventario con base_admin.html", PAGE_REGISTRY.get('fig9', 23)),
+        ("Figura 10. Catálogo de Existencias con Namespacing de Plantillas en Django", PAGE_REGISTRY.get('fig10', 23)),
+        ("Figura 11. Panel Administrativo Nativo de Django con Modelos Registrados", PAGE_REGISTRY.get('fig11', 24)),
     ]
 
     t_rows = []
@@ -346,8 +350,8 @@ def build_list_of_tables_figures(styles):
     t_table = Table(t_rows, colWidths=[410, 58])
     t_table.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
-        ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+        ('TOPPADDING', (0, 0), (-1, -1), 2),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('RIGHTPADDING', (0, 0), (-1, -1), 0),
     ]))
@@ -358,8 +362,8 @@ def build_list_of_tables_figures(styles):
     f_table = Table(f_rows, colWidths=[410, 58])
     f_table.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2.5),
-        ('TOPPADDING', (0, 0), (-1, -1), 2.5),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
+        ('TOPPADDING', (0, 0), (-1, -1), 2),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('RIGHTPADDING', (0, 0), (-1, -1), 0),
     ]))
@@ -388,9 +392,9 @@ def create_apa_table(num_str, title_str, headers, data, col_widths, note_str, st
 
     t = Table(table_data, colWidths=col_widths)
     t.setStyle(TableStyle([
-        ('LINEABOVE', (0, 0), (-1, 0), 1.2, colors.HexColor('#111111')),  # Borde superior
-        ('LINEBELOW', (0, 0), (-1, 0), 1.0, colors.HexColor('#111111')),  # Borde bajo cabecera
-        ('LINEBELOW', (0, -1), (-1, -1), 1.2, colors.HexColor('#111111')), # Borde inferior
+        ('LINEABOVE', (0, 0), (-1, 0), 1.2, colors.HexColor('#111111')),
+        ('LINEBELOW', (0, 0), (-1, 0), 1.0, colors.HexColor('#111111')),
+        ('LINEBELOW', (0, -1), (-1, -1), 1.2, colors.HexColor('#111111')),
         ('VALIGN', (0, 0), (-1, -1), 'TOP'),
         ('TOPPADDING', (0, 0), (-1, -1), 4),
         ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
@@ -471,21 +475,22 @@ def generate_pdf_story(styles):
         "base de software para el aplicativo web institucional de control y gestión de la información, en cumplimiento "
         "de las directrices pedagógicas de la Guía de Aprendizaje G-02 del programa Análisis y Desarrollo de Software (ADSO) "
         "en el Servicio Nacional de Aprendizaje [SENA]. El proyecto técnico fue materializado empleando el framework de alto "
-        "nivel Django (versión 6.0.6) sobre el lenguaje de programación Python (versión 3.14.x) en el entorno de desarrollo "
+        "nivel Django (versión 6.1.1) sobre el lenguaje de programación Python (versión 3.14.x) en el entorno de desarrollo "
         "Visual Studio Code. En primer término, se analiza la justificación de la modularidad empresarial y la resiliencia sistémica "
         "frente a esquemas monolíticos no estructurados. Seguidamente, se desarrolla el marco conceptual comparativo del patrón "
         "arquitectónico Modelo-Vista-Template (MVT), la diferenciación entre Proyecto y Aplicación (App), y las ventajas de las "
-        "Vistas Basadas en Funciones (FBV) y el motor Django Template Language (DTL). En la fase de apropiación práctica, se detalla "
-        "la configuración de entornos virtuales aislados (VENV), la parametrización regional para Colombia (es-co, America/Bogota), "
-        "la estructuración modular desacoplada mediante la función include(), el namespacing estricto de plantillas y la construcción "
-        "de una arquitectura visual con herencia dual (base_cliente.html para el portal público y base_admin.html para el dashboard "
-        "administrativo) integrada con Bootstrap 5. Finalmente, se presentan las evidencias de ejecución del prototipo funcional en "
-        "servidor local y el enlace de control de versiones al repositorio oficial en GitHub.",
+        "Vistas Basadas en Funciones (FBV) y el motor Django Template Language (DTL). En la fase de apropiación práctica, se documentan "
+        "las <b>capturas de pantalla reales del código fuente desarrollado</b>: la configuración de entornos virtuales aislados (.venv), "
+        "la parametrización regional para Colombia (es-co, America/Bogota) en core/settings.py, la estructuración modular desacoplada "
+        "mediante la función include() en core/urls.py e inventario/urls.py, el modelado relacional ORM en inventario/models.py, "
+        "la lógica del controlador en inventario/views.py y la construcción visual con herencia dual de plantillas (base_cliente.html y base_admin.html) "
+        "con Bootstrap 5. Finalmente, se presentan las evidencias de ejecución del prototipo funcional en servidor local y el enlace de "
+        "control de versiones al repositorio oficial en GitHub.",
         styles['APAResumenTexto']
     ))
     story.append(Spacer(1, 14))
     story.append(Paragraph(
-        "<b>Palabras clave:</b> Django, arquitectura MVT, modularidad, entorno virtual, herencia dual, DTL, "
+        "<b>Palabras clave:</b> Django, arquitectura MVT, modularidad, código fuente real, entorno virtual, herencia dual, DTL, "
         "Bootstrap 5, enrutamiento, resiliencia de software, ADSO.",
         styles['APAPalabrasClave']
     ))
@@ -519,8 +524,8 @@ def generate_pdf_story(styles):
         "El presente informe técnico da respuesta exhaustiva y secuencial a las actividades de aprendizaje formuladas en la guía: "
         "la reflexión inicial sobre la modularidad en GAES, la contextualización teórica de los primeros tres capítulos del Manual "
         "Técnico de Desarrollo Web con Django Parte I, la implementación procedimental de la arquitectura en Visual Studio Code "
-        "con herencia dual de plantillas y enrutamiento modular, y la sustentación del prototipo funcional evidenciado mediante capturas "
-        "de pantalla y el control de versiones en GitHub.",
+        "<b>acompañada de capturas de pantalla reales del código fuente programado</b>, y la sustentación del prototipo funcional "
+        "evidenciado mediante capturas de ejecución y el control de versiones en GitHub.",
         styles['APABody']
     ))
     story.append(PageBreak())
@@ -554,22 +559,8 @@ def generate_pdf_story(styles):
         "Por el contrario, la arquitectura modular exigida por Django divide el sistema general (el Proyecto) en aplicaciones específicas "
         "(las Apps). Cada aplicación actúa como un módulo autocontenido que administra sus propios modelos de datos (models.py), su lógica "
         "de procesamiento (views.py), sus rutas locales (urls.py), sus validaciones de formulario (forms.py) y sus plantillas de interfaz "
-        "(templates/). Esta organización profesional habilita:",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "1. <b>Paralelismo y Trabajo en Equipo:</b> Múltiples desarrolladores del GAES pueden trabajar de manera concurrente en distintas "
-        "ramas de Git sobre aplicaciones desacopladas (ej. un aprendiz en 'inventario' y otro en 'usuarios') sin generar interferencias de código.",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "2. <b>Mantenibilidad y Localización de Defectos:</b> Ante una excepción en tiempo de ejecución al actualizar el stock de un artículo, "
-        "el equipo técnico sabe de forma determinista que la falla reside en la carpeta 'inventario', facilitando el depurado inmediato.",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "3. <b>Reutilización y Filosofía DRY:</b> Un módulo de inventario o autenticación bien concebido y desacoplado puede exportarse e "
-        "integrarse en proyectos formativos posteriores prácticamente sin requerir refactorización estructural.",
+        "(templates/). Esta organización profesional habilita el trabajo colaborativo en paralelo, el mantenimiento focalizado de errores "
+        "y la portabilidad de módulos entre diferentes proyectos de software.",
         styles['APABody']
     ))
 
@@ -600,7 +591,7 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 7: CAPÍTULO II - CONTEXTUALIZACIÓN
+    # PÁGINA 8: CAPÍTULO II - CONTEXTUALIZACIÓN
     # ==========================================
     story.append(PageBookmark('cap2'))
     story.append(Paragraph("Capítulo II: Contextualización y Fundamentos Técnicos (Actividad 3.2)", styles['APANivel1']))
@@ -649,23 +640,10 @@ def generate_pdf_story(styles):
         styles['APABody']
     ))
 
-    story.append(Spacer(1, 4))
-    # Figura 1: VS Code Tree
-    story.append(PageBookmark('fig1'))
-    story.extend(create_apa_figure(
-        "Figura 1",
-        "Entorno de Desarrollo VS Code con la Arquitectura de Directorios Modular",
-        "screenshot_vscode_tree.png",
-        440, 240,
-        "Captura de pantalla de Visual Studio Code donde se exhibe la separación modular entre la carpeta global de configuración (core), "
-        "el módulo funcional de negocio (inventario), las plantillas globales (templates) y los recursos estáticos (static).",
-        styles
-    ))
-
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 8: MVT Y CICLO DE VIDA DE LA PETICIÓN
+    # PÁGINA 10: PATRÓN MVT Y DIAGRAMA
     # ==========================================
     story.append(PageBookmark('sec2_3'))
     story.append(Paragraph("Patrón de Arquitectura MVT (Modelo - Vista - Template)", styles['APANivel2']))
@@ -696,14 +674,13 @@ def generate_pdf_story(styles):
         styles['APABody']
     ))
 
-    story.append(Spacer(1, 4))
-    # Figura 2: Diagrama MVT
-    story.append(PageBookmark('fig2'))
+    # Figura 1: Diagrama MVT
+    story.append(PageBookmark('fig1'))
     story.extend(create_apa_figure(
-        "Figura 2",
+        "Figura 1",
         "Diagrama de Flujo y Arquitectura del Patrón MVT en Django",
         "diagram_mvt_architecture.png",
-        440, 240,
+        440, 220,
         "Diagrama conceptual estandarizado que modela el ciclo de vida completo de la petición HTTP (Request-Response Lifecycle), "
         "la delegación de rutas mediante include(), la consulta ORM y la inyección de contexto en la plantilla DTL.",
         styles
@@ -729,7 +706,7 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 9: FBV vs CBV Y MOTOR DE PLANTILLAS DTL
+    # PÁGINA 11: FBV vs CBV Y TABLA 2
     # ==========================================
     story.append(PageBookmark('sec2_4'))
     story.append(Paragraph("Comparativa Técnica: Vistas Basadas en Funciones (FBV) vs. Clases (CBV)", styles['APANivel2']))
@@ -759,7 +736,11 @@ def generate_pdf_story(styles):
         styles
     ))
 
-    story.append(Spacer(1, 4))
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 12: DTL SINTAXIS Y FILTROS (TABLAS 3 Y 4)
+    # ==========================================
     story.append(PageBookmark('sec2_5'))
     story.append(Paragraph("El Puente de Comunicación: El Diccionario de Contexto y el Motor DTL", styles['APANivel2']))
     story.append(Paragraph(
@@ -810,7 +791,7 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 10: CAPÍTULO III - APROPIACIÓN PRÁCTICA
+    # PÁGINA 14: CAPÍTULO III - APROPIACIÓN PRÁCTICA Y VENV
     # ==========================================
     story.append(PageBookmark('cap3'))
     story.append(Paragraph("Capítulo III: Apropiación del Conocimiento - Implementación Práctica (Actividad 3.3)", styles['APANivel1']))
@@ -828,8 +809,8 @@ def generate_pdf_story(styles):
     ))
     story.append(Paragraph(
         "Posteriormente, con el entorno virtual debidamente activado (verificado mediante el prefijo <code>(.venv)</code> en la terminal), "
-        "se instaló el framework mediante el gestor de paquetes de Python: <code>pip install django</code>, verificando la disponibilidad "
-        "exitosa de la versión 6.0.6 a través del comando <code>django-admin --version</code>.",
+        "se instalaron las dependencias del proyecto mediante <code>.\\.venv\\Scripts\\pip install -r requirements.txt</code>, "
+        "garantizando la disponibilidad de Django 6.1.1, ReportLab 5.0.1 y PyMuPDF 1.28.2.",
         styles['APABody']
     ))
 
@@ -847,65 +828,45 @@ def generate_pdf_story(styles):
         styles['APABody']
     ))
 
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 15: CÓDIGO REAL SETTINGS.PY (FIGURA 2)
+    # ==========================================
     story.append(PageBookmark('sec3_3'))
     story.append(Paragraph("Configuración Regional y Directorios Globales en settings.py", styles['APANivel2']))
     story.append(Paragraph(
         "Con el fin de adaptar el sistema a la normativa y contexto geográfico de Colombia, se modificaron los parámetros de "
-        "internacionalización en el archivo <code>core/settings.py</code>:",
+        "internacionalización en el archivo <code>core/settings.py</code> estableciendo el idioma en español colombiano (<code>es-co</code>) "
+        "y la zona horaria en <code>America/Bogota</code>. Asimismo, se registraron las aplicaciones del proyecto en <code>INSTALLED_APPS</code> "
+        "y se definieron las rutas globales para plantillas maestras y recursos estáticos mediante la variable de sistema <code>BASE_DIR</code>.",
         styles['APABody']
     ))
-    story.append(Paragraph(
-        "<code># Configuración Regional - Colombia<br/>"
-        "LANGUAGE_CODE = 'es-co'<br/>"
-        "TIME_ZONE = 'America/Bogota'<br/>"
-        "USE_I18N = True<br/>"
-        "USE_TZ = True</code>",
-        styles['APACodeBlock']
-    ))
-    story.append(Paragraph(
-        "Asimismo, se instruyó a Django para que reconozca los directorios de plantillas globales y recursos estáticos mediante la "
-        "variable automática de sistema <code>BASE_DIR</code>, garantizando portabilidad absoluta entre computadores:",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "<code>TEMPLATES = [<br/>"
-        "    {<br/>"
-        "        'BACKEND': 'django.template.backends.django.DjangoTemplates',<br/>"
-        "        'DIRS': [BASE_DIR / 'templates'], # Ruta global para plantillas duales<br/>"
-        "        'APP_DIRS': True,<br/>"
-        "        # ... context processors<br/>"
-        "    },<br/>"
-        "]<br/>"
-        "STATIC_URL = 'static/'<br/>"
-        "STATICFILES_DIRS = [BASE_DIR / 'static']</code>",
-        styles['APACodeBlock']
+
+    # Figura 2: Código Real settings.py
+    story.append(PageBookmark('fig2'))
+    story.extend(create_apa_figure(
+        "Figura 2",
+        "Código Fuente Real: Configuración Regional y Módulos en core/settings.py",
+        "screenshot_code_settings.png",
+        440, 245,
+        "Captura de pantalla real del código fuente de core/settings.py programado en el proyecto, donde se aprecia el registro de la app "
+        "'inventario', la ruta global de plantillas duales (BASE_DIR / 'templates'), la configuración regional colombiana y los directorios estáticos.",
+        styles
     ))
 
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 11: CREACIÓN DE APP, NAMESPACING Y ENRUTAMIENTO
+    # PÁGINA 16: CREACIÓN DE APP Y NAMESPACING
     # ==========================================
     story.append(PageBookmark('sec3_4'))
     story.append(Paragraph("Creación y Registro de la Primera Aplicación Modular (inventario)", styles['APANivel2']))
     story.append(Paragraph(
         "Para materializar el principio de modularidad, se creó el módulo funcional de existencias mediante el comando: "
         "<code>python manage.py startapp inventario</code>. Acto seguido, se ejecutó el paso crítico obligatorio de registrar "
-        "la nueva aplicación en la lista <code>INSTALLED_APPS</code> del archivo <code>core/settings.py</code>:",
+        "la nueva aplicación en la lista <code>INSTALLED_APPS</code> del archivo <code>core/settings.py</code>.",
         styles['APABody']
-    ))
-    story.append(Paragraph(
-        "<code>INSTALLED_APPS = [<br/>"
-        "    'django.contrib.admin',<br/>"
-        "    'django.contrib.auth',<br/>"
-        "    'django.contrib.contenttypes',<br/>"
-        "    'django.contrib.sessions',<br/>"
-        "    'django.contrib.messages',<br/>"
-        "    'django.contrib.staticfiles',<br/>"
-        "    # Módulos y Aplicaciones Propias del Proyecto Formativo<br/>"
-        "    'inventario',<br/>"
-        "]</code>",
-        styles['APACodeBlock']
     ))
 
     story.append(PageBookmark('sec3_5'))
@@ -921,109 +882,113 @@ def generate_pdf_story(styles):
         styles['APABody']
     ))
 
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 17: CÓDIGO REAL ENRUTAMIENTO (FIGURA 3)
+    # ==========================================
     story.append(PageBookmark('sec3_6'))
     story.append(Paragraph("Enrutamiento Desacoplado mediante include() en core/urls.py", styles['APANivel2']))
     story.append(Paragraph(
         "Para lograr un desacoplamiento limpio, las rutas no se concentraron en un único archivo global. El proyecto principal "
-        "delega el tráfico web hacia el módulo mediante la función <code>include()</code> en <code>core/urls.py</code>:",
+        "delega el tráfico web hacia el módulo mediante la función <code>include()</code> en <code>core/urls.py</code>. A su vez, "
+        "en <code>inventario/urls.py</code> se definió el espacio de nombres local (<code>app_name = 'inventario'</code>) y sus endpoints internos.",
         styles['APABody']
     ))
-    story.append(Paragraph(
-        "<code>from django.contrib import admin<br/>"
-        "from django.urls import path, include<br/>"
-        "from . import views<br/><br/>"
-        "urlpatterns = [<br/>"
-        "    path('admin/', admin.site.urls),<br/>"
-        "    path('', views.home, name='home'), # Portal público<br/>"
-        "    path('inventario/', include('inventario.urls')), # Módulo delegado<br/>"
-        "]</code>",
-        styles['APACodeBlock']
-    ))
-    story.append(Paragraph(
-        "A su vez, en <code>inventario/urls.py</code> se definió el espacio de nombres local (<code>app_name = 'inventario'</code>) "
-        "y sus endpoints internos:",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "<code>from django.urls import path<br/>"
-        "from . import views<br/><br/>"
-        "app_name = 'inventario'<br/><br/>"
-        "urlpatterns = [<br/>"
-        "    path('', views.dashboard_inventario, name='dashboard'),<br/>"
-        "    path('productos/', views.lista_productos, name='lista_productos'),<br/>"
-        "]</code>",
-        styles['APACodeBlock']
+
+    # Figura 3: Código Real URLs
+    story.append(PageBookmark('fig3'))
+    story.extend(create_apa_figure(
+        "Figura 3",
+        "Código Fuente Real: Enrutamiento Modular Desacoplado con include()",
+        "screenshot_code_urls.png",
+        440, 205,
+        "Captura de pantalla real del código fuente de core/urls.py e inventario/urls.py, evidenciando el mecanismo de delegación "
+        "mediante la función include() y el uso del espacio de nombres (app_name = 'inventario') para evitar colisiones de rutas.",
+        styles
     ))
 
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 12: HERENCIA DUAL Y MODELADO DE DATOS
+    # PÁGINA 18: CÓDIGO REAL VISTAS (FIGURA 4)
     # ==========================================
     story.append(PageBookmark('sec3_7'))
-    story.append(Paragraph("Arquitectura Visual con Herencia Dual de Plantillas y Bootstrap 5", styles['APANivel2']))
-    story.append(Paragraph(
-        "Considerando que los usuarios de un software empresarial poseen roles claramente diferenciados, se construyó un "
-        "sistema de <b>Herencia Dual</b> integrando Bootstrap 5 vía CDN:",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "1. <b>Plantilla Maestra Pública (base_cliente.html):</b> Diseñada para clientes y visitantes generales. Incluye una barra de navegación "
-        "superior horizontal con acceso directo al catálogo corporativo, diseño adaptable para dispositivos móviles y enlace de acceso a la intranet.",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "2. <b>Plantilla Maestra Administrativa (base_admin.html):</b> Estructurada con el formato visual de un <i>Dashboard</i> corporativo. "
-        "Cuenta con una barra superior institucional y un menú lateral (<i>Sidebar</i>) con enlaces a los diferentes módulos de la solución (Inventario, "
-        "Usuarios, Reportes, Panel Django) y botón de cierre de sesión.",
-        styles['APABody']
-    ))
-
-    story.append(PageBookmark('sec3_8'))
-    story.append(Paragraph("Lógica del Controlador y Modelado de Datos con el ORM", styles['APANivel2']))
-    story.append(Paragraph(
-        "En la capa de datos (<code>inventario/models.py</code>), se codificaron las entidades relacionales <code>Categoria</code> y "
-        "<code>Producto</code> con clave foránea asociativa (<code>ForeignKey</code>) y métodos de representación legible (<code>__str__</code>):",
-        styles['APABody']
-    ))
-    story.append(Paragraph(
-        "<code>from django.db import models<br/><br/>"
-        "class Categoria(models.Model):<br/>"
-        "    nombre = models.CharField(max_length=100, unique=True)<br/>"
-        "    descripcion = models.TextField(blank=True, null=True)<br/>"
-        "    def __str__(self): return self.nombre<br/><br/>"
-        "class Producto(models.Model):<br/>"
-        "    nombre = models.CharField(max_length=150)<br/>"
-        "    precio = models.DecimalField(max_digits=10, decimal_places=2)<br/>"
-        "    stock = models.IntegerField(default=0)<br/>"
-        "    categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name='productos')<br/>"
-        "    fecha_registro = models.DateTimeField(auto_now_add=True)<br/>"
-        "    def __str__(self): return f'{self.nombre} - Stock: {self.stock}'</code>",
-        styles['APACodeBlock']
-    ))
+    story.append(Paragraph("Lógica del Controlador y Diccionario de Contexto en views.py", styles['APANivel2']))
     story.append(Paragraph(
         "En la capa de lógica (<code>inventario/views.py</code>), la función <code>dashboard_inventario</code> ejecuta consultas agregadas "
         "y filtros mediante el ORM (<code>Producto.objects.count()</code>, <code>Producto.objects.filter(stock__lt=10)</code>) y despacha "
-        "el diccionario de contexto al motor de plantillas:",
+        "el diccionario de contexto al motor de plantillas a través de la función <code>render()</code>.",
         styles['APABody']
     ))
-    story.append(Paragraph(
-        "<code>def dashboard_inventario(request):<br/>"
-        "    contexto = {<br/>"
-        "        'titulo': 'Panel Central de Inventario',<br/>"
-        "        'total_productos': Producto.objects.count(),<br/>"
-        "        'bajo_stock': Producto.objects.filter(stock__lt=10).count(),<br/>"
-        "        'productos': Producto.objects.select_related('categoria').all()[:10],<br/>"
-        "        'empresa': 'ADSO - Sistema de Gestión',<br/>"
-        "    }<br/>"
-        "    return render(request, 'inventario/index.html', contexto)</code>",
-        styles['APACodeBlock']
+
+    # Figura 4: Código Real Views
+    story.append(PageBookmark('fig4'))
+    story.extend(create_apa_figure(
+        "Figura 4",
+        "Código Fuente Real: Vista Controladora e Inyección de Contexto en views.py",
+        "screenshot_code_views.png",
+        440, 210,
+        "Captura de pantalla real del archivo inventario/views.py mostrando la vista FBV dashboard_inventario, la recolección "
+        "de métricas del ORM, la construcción del diccionario de contexto y su despacho hacia la plantilla index.html.",
+        styles
     ))
 
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 13: CAPÍTULO IV - TRANSFERENCIA Y EVIDENCIAS
+    # PÁGINA 19: CÓDIGO REAL MODELOS (FIGURA 5)
+    # ==========================================
+    story.append(PageBookmark('sec3_8'))
+    story.append(Paragraph("Modelado de Datos Relacional y Persistencia con el ORM", styles['APANivel2']))
+    story.append(Paragraph(
+        "En la capa de persistencia (<code>inventario/models.py</code>), se codificaron las entidades relacionales <code>Categoria</code> y "
+        "<code>Producto</code> con clave foránea asociativa (<code>ForeignKey</code>) y métodos de representación legible (<code>__str__</code>):",
+        styles['APABody']
+    ))
+
+    # Figura 5: Código Real Models
+    story.append(PageBookmark('fig5'))
+    story.extend(create_apa_figure(
+        "Figura 5",
+        "Código Fuente Real: Modelos Relacionales y Persistencia ORM en models.py",
+        "screenshot_code_models.png",
+        440, 230,
+        "Captura de pantalla real del archivo inventario/models.py que define los modelos relacionales Categoria y Producto con tipos de datos "
+        "estrictos, llave foránea asociativa (models.CASCADE) y métodos de representación formal __str__().",
+        styles
+    ))
+
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 20: CÓDIGO REAL PLANTILLAS (FIGURA 6)
+    # ==========================================
+    story.append(PageBookmark('sec3_9'))
+    story.append(Paragraph("Arquitectura Visual con Herencia Dual de Plantillas y Bootstrap 5", styles['APANivel2']))
+    story.append(Paragraph(
+        "Considerando que los usuarios de un software empresarial poseen roles claramente diferenciados, se construyó un "
+        "sistema de <b>Herencia Dual</b> integrando Bootstrap 5 vía CDN: la plantilla <code>base_cliente.html</code> para la interfaz "
+        "pública y <code>base_admin.html</code> con barra lateral (*Sidebar*) para el módulo de gestión.",
+        styles['APABody']
+    ))
+
+    # Figura 6: Código Real Plantillas DTL
+    story.append(PageBookmark('fig6'))
+    story.extend(create_apa_figure(
+        "Figura 6",
+        "Código Fuente Real: Plantilla DTL con Herencia Dual en index.html",
+        "screenshot_code_templates.png",
+        440, 240,
+        "Captura de pantalla real de la plantilla inventario/templates/inventario/index.html evidenciando la herencia mediante "
+        "{% extends 'base_admin.html' %}, la definición de bloques {% block content %} y la inyección de variables {{ total_productos }}.",
+        styles
+    ))
+
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 21: CAPÍTULO IV - TRANSFERENCIA Y TERMINAL (FIGURA 7)
     # ==========================================
     story.append(PageBookmark('cap4'))
     story.append(Paragraph("Capítulo IV: Transferencia del Conocimiento - Prototipo y Evidencias (Actividad 3.4)", styles['APANivel1']))
@@ -1034,23 +999,27 @@ def generate_pdf_story(styles):
     story.append(Paragraph(
         "La comprobación integral de la arquitectura se realizó levantando el servidor de desarrollo mediante el comando "
         "<code>python manage.py runserver 127.0.0.1:8000</code>. El subsistema <i>StatReloader</i> verificó la sintaxis del código "
-        "y confirmó: <i>'System check identified no issues (0 silenced)'</i>, habilitando los puertos de escucha locales.",
+        "y confirmó: <i>'System check identified no issues (0 silenced)'</i>, atendiendo las peticiones con código de estado 200 OK.",
         styles['APABody']
     ))
 
-    # Figura 3: Terminal
-    story.append(PageBookmark('fig3'))
+    # Figura 7: Terminal
+    story.append(PageBookmark('fig7'))
     story.extend(create_apa_figure(
-        "Figura 3",
+        "Figura 7",
         "Consola Terminal con Entorno Virtual (.venv) y Servidor Django Activo",
         "screenshot_terminal_runserver.png",
-        440, 210,
+        440, 205,
         "Captura de la consola PowerShell que certifica la activación del entorno virtual .venv, la verificación del sistema sin "
         "advertencias y la atención de solicitudes HTTP 200 OK para las rutas pública, administrativa y del panel de control.",
         styles
     ))
 
-    story.append(Spacer(1, 4))
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 22: INTERFAZ PÚBLICA (FIGURA 8)
+    # ==========================================
     story.append(PageBookmark('sec4_2'))
     story.append(Paragraph("Evidencias Gráficas de Navegación Pública y Administrativa", styles['APANivel2']))
     story.append(Paragraph(
@@ -1059,10 +1028,10 @@ def generate_pdf_story(styles):
         styles['APABody']
     ))
 
-    # Figura 4: Portal Público
-    story.append(PageBookmark('fig4'))
+    # Figura 8: Portal Público
+    story.append(PageBookmark('fig8'))
     story.extend(create_apa_figure(
-        "Figura 4",
+        "Figura 8",
         "Interfaz Pública de Usuario basada en base_cliente.html y Bootstrap 5",
         "screenshot_public_home.png",
         440, 230,
@@ -1074,27 +1043,27 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 14: EVIDENCIAS DASHBOARD, CATÁLOGO Y GITHUB
+    # PÁGINA 23: DASHBOARD Y CATÁLOGO (FIGURAS 9 Y 10)
     # ==========================================
-    # Figura 5: Dashboard Inventario
-    story.append(PageBookmark('fig5'))
+    # Figura 9: Dashboard Inventario
+    story.append(PageBookmark('fig9'))
     story.extend(create_apa_figure(
-        "Figura 5",
+        "Figura 9",
         "Dashboard Administrativo del Módulo de Inventario con base_admin.html",
         "screenshot_admin_dashboard.png",
-        440, 230,
+        440, 215,
         "Pantalla del panel administrativo en http://127.0.0.1:8000/inventario/, exhibiendo el menú lateral (Sidebar), "
         "tarjetas métricas con contadores dinámicos alimentados desde el ORM y tabla interactiva de existencias recientes.",
         styles
     ))
 
-    # Figura 6: Catálogo de Productos
-    story.append(PageBookmark('fig6'))
+    # Figura 10: Catálogo de Productos
+    story.append(PageBookmark('fig10'))
     story.extend(create_apa_figure(
-        "Figura 6",
+        "Figura 10",
         "Catálogo de Existencias con Namespacing de Plantillas en Django",
         "screenshot_admin_catalog.png",
-        440, 210,
+        440, 205,
         "Pantalla del catálogo en http://127.0.0.1:8000/inventario/productos/, evidenciando la resolución correcta de plantillas "
         "namespaced (inventario/productos/lista.html) heredadas de base_admin.html.",
         styles
@@ -1103,17 +1072,17 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 15: PANEL DJANGO Y CONTROL DE VERSIONES
+    # PÁGINA 24: PANEL ADMIN DJANGO Y REPO GITHUB (FIGURA 11)
     # ==========================================
-    # Figura 7: Panel de Administración Nativo
-    story.append(PageBookmark('fig7'))
+    # Figura 11: Panel de Administración Nativo
+    story.append(PageBookmark('fig11'))
     story.extend(create_apa_figure(
-        "Figura 7",
+        "Figura 11",
         "Panel Administrativo Nativo de Django con Modelos Registrados",
         "screenshot_django_admin_auth.png",
-        440, 210,
+        440, 205,
         "Interfaz del panel nativo de administración en http://127.0.0.1:8000/admin/ autenticada con el superusuario del sistema, "
-        "demostrando la administración directa de los modelos Categoria y Producto.",
+        "demostrando la administración directa de los modelos Categoria y Producto con estilos CSS oficiales completos.",
         styles
     ))
 
@@ -1145,21 +1114,10 @@ def generate_pdf_story(styles):
         styles['APACodeBlock']
     ))
 
-    # Figura 8: Git Repo
-    story.append(PageBookmark('fig8'))
-    story.extend(create_apa_figure(
-        "Figura 8",
-        "Repositorio Oficial en GitHub con el Código Fuente del Proyecto",
-        "diagram_mvt_architecture.png",  # Diagrama o evidencia de repo
-        440, 160,
-        "Constancia del repositorio en la nube de GitHub con el historial de commits, arquitectura de carpetas y archivo README.md.",
-        styles
-    ))
-
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 16: MATRIZ DE CRITERIOS Y CONCLUSIONES
+    # PÁGINA 25: MATRIZ DE CRITERIOS Y CONCLUSIONES
     # ==========================================
     story.append(PageBookmark('sec4_4'))
     story.append(Paragraph("Criterios de Evaluación y Lista de Chequeo de la Guía G-02", styles['APANivel2']))
@@ -1180,7 +1138,7 @@ def generate_pdf_story(styles):
             ["Modularidad", "Estructuración de Apps independientes desacopladas de la raíz.", "Módulo 'inventario' creado con urls.py, forms.py, models.py y views.py.", "Aprobado (100%)"],
             ["Enrutamiento", "Configuración de rutas con include() para interfaces públicas y privadas.", "core/urls.py delegando a inventario/urls.py con namespaces.", "Aprobado (100%)"],
             ["Arquitectura Visual", "Motor de plantillas DTL y Bootstrap 5 con Herencia Dual.", "base_cliente.html y base_admin.html implementadas y navegables.", "Aprobado (100%)"],
-            ["Evidencias y Sustentación", "Repositorio GitHub y capturas del servidor local en informe APA 7.", "Informe técnico completo en PDF y repositorio en la nube sincronizado.", "Aprobado (100%)"]
+            ["Evidencias y Sustentación", "Repositorio GitHub y capturas reales de código y ejecución en informe APA 7.", "Informe técnico completo en PDF con 11 figuras y repositorio en GitHub.", "Aprobado (100%)"]
         ],
         [85, 125, 185, 73],
         "Verificación formal de cumplimiento de la Lista de Chequeo según formato GFPI-F-135 V04 del SENA.",
@@ -1212,7 +1170,7 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 17: REFERENCIAS BIBLIOGRÁFICAS
+    # PÁGINA 26: REFERENCIAS BIBLIOGRÁFICAS
     # ==========================================
     story.append(PageBookmark('referencias'))
     story.append(Paragraph("Referencias Bibliográficas", styles['APANivel1']))
