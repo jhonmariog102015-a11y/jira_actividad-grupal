@@ -14,7 +14,8 @@ __pycache__/
 db.sqlite3-journal
 
 # Archivos de IDE y sistema operativo
-.vscode/
+.vscode/*
+!.vscode/settings.json
 .idea/
 *.swp
 *.swo
