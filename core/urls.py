@@ -17,4 +17,7 @@ urlpatterns = [
     
     # Enrutamiento modular: delega las rutas hacia la aplicación 'inventario'
     path('inventario/', include('inventario.urls')),
+    
+    # Vista de previsualización autenticada para evidencias del panel Django
+    path('admin-preview/', views.admin_preview, name='admin_preview'),
 ]

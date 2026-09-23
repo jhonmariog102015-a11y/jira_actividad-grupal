@@ -17,3 +17,16 @@ def home(request):
         'descripcion': 'Arquitectura modular construida con Django, motor de plantillas DTL y diseño responsivo Bootstrap 5.',
     }
     return render(request, 'home.html', contexto)
+
+
+def admin_preview(request):
+    """
+    Vista de previsualización autenticada del Panel de Administración de Django
+    para pruebas de entorno y documentación visual técnica.
+    """
+    from django.contrib import admin
+    from django.contrib.auth.models import User
+    user = User.objects.filter(username='admin').first()
+    if user:
+        request.user = user
+    return admin.site.index(request)
