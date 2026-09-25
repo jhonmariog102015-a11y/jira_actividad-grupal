@@ -2,7 +2,7 @@
 Generador del Informe Técnico en PDF bajo Normas APA 7.ª Edición
 Actividad: "Arquitectura Base, Enrutamiento y Plantillas" (Guía G-02)
 Programa: Análisis y Desarrollo de Software (ADSO) - SENA Regional Boyacá
-Autor: Jhon Mario Guamanzar Sierra
+Autores (Equipo GAES): Jhon Mario Guamanzar Sierra, Juan Carlos Merchán, Jhon Exander Gutiérrez Moreno
 Instructor: Antony Reynel Botello Herrera
 INCLUYE CAPTURAS REALES DEL CÓDIGO FUENTE DEL PROYECTO
 """
@@ -430,17 +430,20 @@ def generate_pdf_story(styles):
     # ==========================================
     # PÁGINA 1: PORTADA ESTUDIANTIL APA 7
     # ==========================================
-    story.append(Spacer(1, 100))
+    story.append(Spacer(1, 80))
     story.append(Paragraph("Informe Técnico: Arquitectura Base, Enrutamiento Modular y Sistema Dual de Plantillas en Django", styles['APAPortadaTitulo']))
     story.append(Paragraph("Solución Técnica y Metodológica de la Guía de Aprendizaje G-02<br/>Fase de Ejecución - Proyecto Formativo", styles['APAPortadaSubtitulo']))
-    story.append(Spacer(1, 60))
+    story.append(Spacer(1, 40))
     story.append(Paragraph(
-        "<b>Jhon Mario Guamanzar Sierra</b><br/><br/>"
+        "<b>Autores (Equipo de Desarrollo GAES):</b><br/>"
+        "Jhon Mario Guamanzar Sierra<br/>"
+        "Juan Carlos Merchán<br/>"
+        "Jhon Exander Gutiérrez Moreno<br/><br/>"
         "<b>Servicio Nacional de Aprendizaje (SENA)</b><br/>"
         "Centro Minero - Regional Boyacá<br/>"
         "Programa: Análisis y Desarrollo de Software (ADSO)<br/>"
         "Ficha de Caracterización: 3321349<br/><br/>"
-        "<b>Instructor: Antony Reynel Botello Herrera</b><br/><br/>"
+        "<b>Instructor Técnico: Antony Reynel Botello Herrera</b><br/><br/>"
         "Septiembre de 2026",
         styles['APAPortadaMeta']
     ))
@@ -547,7 +550,8 @@ def generate_pdf_story(styles):
     story.append(PageBookmark('sec1_1'))
     story.append(Paragraph("Importancia de la Modularidad frente a la Estructura Monolítica", styles['APANivel2']))
     story.append(Paragraph(
-        "En el marco del trabajo colaborativo en equipos GAES (Grupos Autónomos de Estudio SENA), se abordó el primer interrogante "
+        "En el marco del trabajo colaborativo en equipos GAES (Grupos Autónomos de Estudio SENA), integrado por los aprendices "
+        "<b>Jhon Mario Guamanzar Sierra</b>, <b>Juan Carlos Merchán</b> y <b>Jhon Exander Gutiérrez Moreno</b>, se abordó el primer interrogante "
         "técnico: <i>¿Por qué cree que las empresas de software exigen que el código esté dividido en 'módulos' independientes en "
         "lugar de tener todo en una sola gran carpeta?</i> La respuesta radica en los principios fundamentales de la ingeniería de "
         "software contemporánea: el Principio de Responsabilidad Única (SRP), la Cohesión Alta y el Acoplamiento Débil (<i>Loose Coupling</i>) "
@@ -1174,7 +1178,7 @@ def generate_pdf_story(styles):
     story.append(Paragraph(
         "• <b>URL Oficial del Repositorio:</b> <font color='#0d6efd'><u>https://github.com/jhonmariog102015-a11y/jira_actividad-grupal.git</u></font><br/>"
         "• <b>Rama Principal de Despliegue:</b> <code>main</code><br/>"
-        "• <b>Autor y Desarrollador:</b> Jhon Mario Guamanzar Sierra (Cuenta GitHub: <code>jhonmariog102015-a11y</code>)",
+        "• <b>Equipo Desarrollador (GAES):</b> Jhon Mario Guamanzar Sierra (Cuenta GitHub: <code>jhonmariog102015-a11y</code>), Juan Carlos Merchán, Jhon Exander Gutiérrez Moreno",
         styles['APABodyNoIndent']
     ))
     story.append(Paragraph(

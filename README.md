@@ -6,7 +6,10 @@
 **Programa:** Análisis y Desarrollo de Software (ADSO) | **Ficha de Caracterización:** 3321349  
 **Proyecto Formativo:** Desarrollo de Aplicativos Web para Control y Gestión de la Información  
 **Fase:** Ejecución | **Competencia:** 220501096 - Desarrollar la solución de software de acuerdo con el diseño y metodologías de desarrollo  
-**Autor / Aprendiz:** Jhon Mario Guamanzar Sierra  
+**Equipo de Desarrollo (GAES):**  
+- Jhon Mario Guamanzar Sierra  
+- Juan Carlos Merchán  
+- Jhon Exander Gutiérrez Moreno  
 **Instructor Técnico:** Ing. Antony Reynel Botello Herrera  
 **Fecha:** Septiembre de 2026  
 
