@@ -898,8 +898,9 @@ def generate_pdf_story(styles):
     story.append(Paragraph("Enrutamiento Desacoplado mediante include() en core/urls.py", styles['APANivel2']))
     story.append(Paragraph(
         "Para lograr un desacoplamiento limpio, las rutas no se concentraron en un único archivo global. El proyecto principal "
-        "delega el tráfico web hacia el módulo mediante la función <code>include()</code> en <code>core/urls.py</code>. A su vez, "
-        "en <code>inventario/urls.py</code> se definió el espacio de nombres local (<code>app_name = 'inventario'</code>) y sus endpoints internos.",
+        "delega el tráfico web hacia el módulo mediante la función <code>include()</code> en <code>core/urls.py</code>, integrando a su "
+        "vez los endpoints canónicos de la tienda y catálogo de frutas ('El Paso Frutería'). En <code>inventario/urls.py</code> se definió "
+        "el espacio de nombres local (<code>app_name = 'inventario'</code>) para garantizar la navegación modular.",
         styles['APABody']
     ))
 
@@ -909,9 +910,9 @@ def generate_pdf_story(styles):
         "Figura 3",
         "Código Fuente Real: Enrutamiento Modular Desacoplado con include()",
         "screenshot_code_urls.png",
-        440, 205,
+        440, 220,
         "Captura de pantalla real del código fuente de core/urls.py e inventario/urls.py, evidenciando el mecanismo de delegación "
-        "mediante la función include() y el uso del espacio de nombres (app_name = 'inventario') para evitar colisiones de rutas.",
+        "mediante la función include(), las rutas integradas de la tienda y catálogo de frutas ('El Paso Frutería') y el uso del espacio de nombres (app_name = 'inventario').",
         styles
     ))
 
@@ -923,9 +924,9 @@ def generate_pdf_story(styles):
     story.append(PageBookmark('sec3_7'))
     story.append(Paragraph("Lógica del Controlador y Diccionario de Contexto en views.py", styles['APANivel2']))
     story.append(Paragraph(
-        "En la capa de lógica (<code>inventario/views.py</code>), la función <code>dashboard_inventario</code> ejecuta consultas agregadas "
-        "y filtros mediante el ORM (<code>Producto.objects.count()</code>, <code>Producto.objects.filter(stock__lt=10)</code>) y despacha "
-        "el diccionario de contexto al motor de plantillas a través de la función <code>render()</code>.",
+        "En la capa de lógica, se estructuraron controladores desacoplados: en <code>core/views.py</code> se procesan las vistas públicas "
+        "de la tienda y catálogo de frutas (<code>tienda_fruteria</code> y <code>catalogo_frutas</code>), mientras que en <code>inventario/views.py</code> "
+        "la función <code>dashboard_inventario</code> ejecuta consultas agregadas al ORM y despacha el diccionario de contexto al motor DTL.",
         styles['APABody']
     ))
 
@@ -935,9 +936,9 @@ def generate_pdf_story(styles):
         "Figura 4",
         "Código Fuente Real: Vista Controladora e Inyección de Contexto en views.py",
         "screenshot_code_views.png",
-        440, 210,
-        "Captura de pantalla real del archivo inventario/views.py mostrando la vista FBV dashboard_inventario, la recolección "
-        "de métricas del ORM, la construcción del diccionario de contexto y su despacho hacia la plantilla index.html.",
+        440, 225,
+        "Captura de pantalla real de las vistas en core/views.py e inventario/views.py, evidenciando las funciones controladoras de El Paso Frutería "
+        "y el cálculo de existencias dinámicas en el dashboard despachadas mediante render().",
         styles
     ))
 
@@ -986,9 +987,9 @@ def generate_pdf_story(styles):
         "Figura 6",
         "Código Fuente Real: Plantilla DTL con Herencia Dual en index.html",
         "screenshot_code_templates.png",
-        440, 240,
-        "Captura de pantalla real de la plantilla inventario/templates/inventario/index.html evidenciando la herencia mediante "
-        "{% extends 'base_admin.html' %}, la definición de bloques {% block content %} y la inyección de variables {{ total_productos }}.",
+        440, 225,
+        "Captura de pantalla real de la plantilla templates/home.html evidenciando la herencia mediante {% extends 'base_cliente.html' %}, "
+        "la inyección de metadatos institucionales y los botones canónicos de navegación directa hacia la tienda y catálogo de frutas.",
         styles
     ))
 
@@ -1018,7 +1019,7 @@ def generate_pdf_story(styles):
         "screenshot_terminal_runserver.png",
         440, 205,
         "Captura de la consola PowerShell que certifica la activación del entorno virtual .venv, la verificación del sistema sin "
-        "advertencias y la atención de solicitudes HTTP 200 OK para las rutas pública, administrativa y del panel de control.",
+        "advertencias y la atención de solicitudes HTTP 200 OK para las rutas pública (/), comercial (/tienda/), catálogo (/catalogo-frutas/) y administrativa (/inventario/).",
         styles
     ))
 

@@ -27,17 +27,17 @@ def create_terminal_capture():
         ('Performing system checks...', '#cccccc'),
         ('', '#cccccc'),
         ('System check identified no issues (0 silenced).', '#4ec9b0'),
-        ('Septiembre 23, 2026 - 11:36:47', '#9cdcfe'),
-        ('Django version 6.0.6, using settings \'core.settings\'', '#ce9178'),
+        ('Septiembre 25, 2026 - 09:05:12', '#9cdcfe'),
+        ('Django version 6.1.1, using settings \'core.settings\'', '#ce9178'),
         ('Starting development server at http://127.0.0.1:8000/', '#4fc1ff'),
         ('Quit the server with CTRL-BREAK.', '#cccccc'),
         ('', '#cccccc'),
-        ('[23/Sep/2026 11:36:58] "GET / HTTP/1.1" 200 7596', '#6a9955'),
-        ('[23/Sep/2026 11:37:02] "GET /inventario/ HTTP/1.1" 200 15795', '#6a9955'),
-        ('[23/Sep/2026 11:37:05] "GET /inventario/productos/ HTTP/1.1" 200 9979', '#6a9955'),
-        ('[23/Sep/2026 11:37:10] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4148', '#6a9955'),
-        ('[23/Sep/2026 11:38:32] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0', '#dcdcaa'),
-        ('[23/Sep/2026 11:38:33] "GET /admin/ HTTP/1.1" 200 6820', '#6a9955'),
+        ('[25/Sep/2026 09:05:20] "GET / HTTP/1.1" 200 7809', '#6a9955'),
+        ('[25/Sep/2026 09:05:25] "GET /tienda/ HTTP/1.1" 200 23899', '#4fc1ff'),
+        ('[25/Sep/2026 09:05:28] "GET /catalogo-frutas/ HTTP/1.1" 200 29908', '#4fc1ff'),
+        ('[25/Sep/2026 09:05:32] "GET /inventario/ HTTP/1.1" 200 20420', '#6a9955'),
+        ('[25/Sep/2026 09:05:36] "GET /inventario/productos/ HTTP/1.1" 200 18938', '#6a9955'),
+        ('[25/Sep/2026 09:05:40] "GET /admin/ HTTP/1.1" 200 8042', '#6a9955'),
     ]
 
     y = 52
@@ -59,94 +59,79 @@ def create_vscode_tree_capture():
     draw.ellipse([(14, 12), (24, 22)], fill='#ff5f56')
     draw.ellipse([(32, 12), (42, 22)], fill='#ffbd2e')
     draw.ellipse([(50, 12), (60, 22)], fill='#27c93f')
-    draw.text((w//2 - 120, 10), 'Visual Studio Code - Arquitectura Modular Django', fill='#cccccc')
+    draw.text((w//2 - 140, 10), 'Visual Studio Code - Arquitectura Django & El Paso Fruteria', fill='#cccccc')
 
     # Sidebar (Explorer)
-    draw.rectangle([(0, 36), (320, h)], fill='#252526')
+    draw.rectangle([(0, 36), (330, h)], fill='#252526')
     draw.text((15, 48), 'EXPLORER: JIRA _ACTIVIDAD', fill='#bbbbbb')
 
     tree_items = [
         ('> .venv', '#858585', 1),
         ('v core', '#569cd6', 1),
-        ('    __init__.py', '#cccccc', 2),
-        ('    asgi.py', '#cccccc', 2),
         ('    settings.py', '#4ec9b0', 2),
         ('    urls.py', '#4ec9b0', 2),
         ('    views.py', '#4ec9b0', 2),
-        ('    wsgi.py', '#cccccc', 2),
         ('v inventario', '#569cd6', 1),
         ('  > migrations', '#858585', 2),
-        ('  v templates', '#ce9178', 2),
-        ('    v inventario', '#ce9178', 3),
-        ('      > productos', '#ce9178', 4),
-        ('      > stock', '#ce9178', 4),
-        ('      index.html', '#e5c07b', 4),
-        ('    admin.py', '#cccccc', 2),
-        ('    apps.py', '#cccccc', 2),
-        ('    forms.py', '#4ec9b0', 2),
+        ('  v templates > inventario', '#ce9178', 2),
+        ('      index.html', '#e5c07b', 3),
+        ('      > productos / lista.html', '#e5c07b', 3),
         ('    models.py', '#4ec9b0', 2),
         ('    urls.py', '#4ec9b0', 2),
         ('    views.py', '#4ec9b0', 2),
         ('v static', '#9cdcfe', 1),
-        ('  > css / custom.css', '#cccccc', 2),
-        ('  > js / main.js', '#cccccc', 2),
+        ('  v css (frutas.css, opcion4.css)', '#cccccc', 2),
+        ('  v js (carrusel.js, catalogo.js)', '#cccccc', 2),
         ('v templates', '#ce9178', 1),
-        ('  > partials', '#ce9178', 2),
+        ('  v fruteria', '#ce9178', 2),
+        ('    catalogo_frutas.html', '#ffd700', 3),
+        ('    tienda.html', '#ffd700', 3),
         ('  base_admin.html', '#e5c07b', 2),
         ('  base_cliente.html', '#e5c07b', 2),
         ('  home.html', '#e5c07b', 2),
-        ('  .gitignore', '#858585', 1),
         ('  manage.py', '#4fc1ff', 1),
         ('  requirements.txt', '#858585', 1),
     ]
 
     y = 75
-    for item, col, lvl in tree_items[:28]:
+    for item, col, lvl in tree_items:
         draw.text((15 + (lvl-1)*12, y), item, fill=col)
-        y += 20
+        y += 21
 
     # Editor main area
-    draw.rectangle([(320, 36), (w, h)], fill='#1e1e1e')
+    draw.rectangle([(330, 36), (w, h)], fill='#1e1e1e')
     # Editor tabs
-    draw.rectangle([(320, 36), (480, 68)], fill='#1e1e1e')
-    draw.rectangle([(480, 36), (640, 68)], fill='#2d2d2d')
-    draw.text((340, 46), 'core/settings.py', fill='#ffffff')
-    draw.text((500, 46), 'core/urls.py', fill='#969696')
+    draw.rectangle([(330, 36), (490, 68)], fill='#1e1e1e')
+    draw.rectangle([(490, 36), (650, 68)], fill='#2d2d2d')
+    draw.text((350, 46), 'core/urls.py', fill='#ffffff')
+    draw.text((510, 46), 'core/views.py', fill='#969696')
 
     code_lines = [
-        ('# core/settings.py - Configuracion Regional y Apps Modulares', '#6a9955'),
-        ('INSTALLED_APPS = [', '#569cd6'),
-        ('    \'django.contrib.admin\',', '#ce9178'),
-        ('    \'django.contrib.auth\',', '#ce9178'),
-        ('    \'django.contrib.contenttypes\',', '#ce9178'),
-        ('    \'django.contrib.sessions\',', '#ce9178'),
-        ('    \'django.contrib.messages\',', '#ce9178'),
-        ('    \'django.contrib.staticfiles\',', '#ce9178'),
-        ('    # Modulo modular registrado:', '#6a9955'),
-        ('    \'inventario\',', '#9cdcfe'),
+        ('# core/urls.py - Enrutador Maestro con Rutas de El Paso Fruteria', '#6a9955'),
+        ('from django.contrib import admin', '#569cd6'),
+        ('from django.urls import path, include', '#569cd6'),
+        ('from . import views', '#569cd6'),
+        ('', '#cccccc'),
+        ('urlpatterns = [', '#569cd6'),
+        ('    # Panel de administración predeterminado de Django', '#6a9955'),
+        ('    path(\'admin/\', admin.site.urls),', '#ce9178'),
+        ('    ', '#cccccc'),
+        ('    # Ruta pública raíz: Landing page para clientes y visitantes', '#6a9955'),
+        ('    path(\'\', views.home, name=\'home\'),', '#ce9178'),
+        ('    ', '#cccccc'),
+        ('    # Enrutamiento modular: delega rutas a la app \'inventario\'', '#6a9955'),
+        ('    path(\'inventario/\', include(\'inventario.urls\')),', '#4ec9b0'),
+        ('    ', '#cccccc'),
+        ('    # Rutas integradas del proyecto formativo El Paso Frutería', '#ffd700'),
+        ('    path(\'tienda/\', views.tienda_fruteria, name=\'tienda_fruteria\'),', '#ffd700'),
+        ('    path(\'catalogo-frutas/\', views.catalogo_frutas, name=\'catalogo_frutas\'),', '#ffd700'),
         (']', '#569cd6'),
-        ('', '#cccccc'),
-        ('TEMPLATES = [', '#569cd6'),
-        ('    {', '#dcdcaa'),
-        ('        \'BACKEND\': \'django.template.backends.django.DjangoTemplates\',', '#ce9178'),
-        ('        \'DIRS\': [BASE_DIR / \'templates\'],  # Herencia dual global', '#4ec9b0'),
-        ('        \'APP_DIRS\': True,', '#ce9178'),
-        ('    },', '#dcdcaa'),
-        (']', '#569cd6'),
-        ('', '#cccccc'),
-        ('LANGUAGE_CODE = \'es-co\'          # Español Colombia', '#ce9178'),
-        ('TIME_ZONE = \'America/Bogota\'      # Zona Horaria Colombia', '#ce9178'),
-        ('USE_I18N = True', '#569cd6'),
-        ('USE_TZ = True', '#569cd6'),
-        ('', '#cccccc'),
-        ('STATIC_URL = \'static/\'', '#ce9178'),
-        ('STATICFILES_DIRS = [BASE_DIR / \'static\']', '#4ec9b0'),
     ]
 
     y = 80
     for line, col in code_lines:
         draw.text((345, y), line, fill=col)
-        y += 20
+        y += 22
 
     img.save('screenshot_vscode_tree.png')
     print('screenshot_vscode_tree.png generado exitosamente.')

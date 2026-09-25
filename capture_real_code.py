@@ -225,29 +225,17 @@ STATICFILES_DIRS = [
     )
 
     # 2. Capture URLs (core/urls.py and inventario/urls.py)
-    urls_snippet = """# 1. core/urls.py - Enrutador Maestro con Delegación include()
-from django.contrib import admin
-from django.urls import path, include
-from . import views
+    with open('core/urls.py', 'r', encoding='utf-8') as f:
+        core_urls_raw = f.read().strip()
+    with open('inventario/urls.py', 'r', encoding='utf-8') as f:
+        inv_urls_raw = f.read().strip()
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.home, name='home'),               # Ruta raíz pública
-    path('inventario/', include('inventario.urls')),  # Delegación al módulo
-]
+    urls_snippet = f"""# 1. core/urls.py - Enrutador Maestro con Delegación y Rutas El Paso Frutería
+{core_urls_raw}
 
 # -------------------------------------------------------------
 # 2. inventario/urls.py - Enrutador Local del Módulo de Inventario
-from django.urls import path
-from . import views
-
-# Namespace para prevenir colisiones entre aplicaciones
-app_name = 'inventario'
-
-urlpatterns = [
-    path('', views.dashboard_inventario, name='dashboard'),
-    path('productos/', views.lista_productos, name='lista_productos'),
-]
+{inv_urls_raw}
 """
     generate_capture(
         urls_snippet,
@@ -256,45 +244,15 @@ urlpatterns = [
         'core > urls.py ➔ inventario > urls.py',
         '🔗',
         'screenshot_code_urls.png',
-        window_size='1100,560'
+        window_size='1100,720'
     )
 
     # 3. Capture Models (inventario/models.py)
-    models_snippet = """# inventario/models.py - Modelos de Base de Datos y ORM Relacional
-from django.db import models
+    with open('inventario/models.py', 'r', encoding='utf-8') as f:
+        models_raw = f.read().strip()
 
-class Categoria(models.Model):
-    nombre = models.CharField(max_length=100, unique=True, verbose_name="Nombre de Categoría")
-    descripcion = models.TextField(blank=True, null=True, verbose_name="Descripción")
-
-    class Meta:
-        verbose_name = "Categoría"
-        verbose_name_plural = "Categorías"
-        ordering = ['nombre']
-
-    def __str__(self):
-        return self.nombre
-
-
-class Producto(models.Model):
-    nombre = models.CharField(max_length=150, verbose_name="Nombre del Producto")
-    precio = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Precio Unitario")
-    stock = models.IntegerField(default=0, verbose_name="Stock Disponible")
-    
-    # Llave Foránea: Relación Muchos a Uno con Categoria
-    categoria = models.ForeignKey(
-        Categoria,
-        on_delete=models.CASCADE,
-        related_name='productos',
-        verbose_name="Categoría"
-    )
-    fecha_registro = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Registro")
-
-    def __str__(self):
-        return f"{self.nombre} - Stock: {self.stock}"
-"""
     generate_capture(
-        models_snippet,
+        models_raw,
         PythonLexer(),
         'models.py',
         'inventario > models.py',
@@ -303,76 +261,57 @@ class Producto(models.Model):
         window_size='1100,680'
     )
 
-    # 4. Capture Views (inventario/views.py)
-    views_snippet = """# inventario/views.py - Vistas Basadas en Funciones (FBV) con Contexto y ORM
-from django.shortcuts import render
-from .models import Producto, Categoria
+    # 4. Capture Views (core/views.py & inventario/views.py)
+    with open('core/views.py', 'r', encoding='utf-8') as f:
+        core_views_raw = f.read().strip()
+    with open('inventario/views.py', 'r', encoding='utf-8') as f:
+        inv_views_raw = f.read().strip()
 
-def dashboard_inventario(request):
-    \"\"\"
-    Vista principal del panel administrativo del inventario.
-    Ejecuta consultas agregadas al ORM y empaqueta el diccionario de contexto.
-    \"\"\"
-    total_productos = Producto.objects.count()
-    bajo_stock = Producto.objects.filter(stock__lt=10).count()
-    productos = Producto.objects.select_related('categoria').all()[:10]
+    views_snippet = f"""# 1. core/views.py - Vistas Públicas y Enrutamiento de El Paso Frutería
+{core_views_raw}
 
-    contexto = {
-        'titulo': 'Panel Central de Inventario',
-        'subtitulo': 'Control y Gestión de Existencias en Tiempo Real',
-        'total_productos': total_productos,
-        'bajo_stock': bajo_stock,
-        'productos': productos,
-        'modulo': 'Inventario',
-        'empresa': 'ADSO - Sistema de Gestión Empresarial',
-    }
-    # La función render procesa la plantilla DTL inyectando el contexto
-    return render(request, 'inventario/index.html', contexto)
+# -------------------------------------------------------------
+# 2. inventario/views.py - Vista FBV del Dashboard con ORM y Contexto
+{inv_views_raw}
 """
     generate_capture(
         views_snippet,
         PythonLexer(),
-        'views.py',
-        'inventario > views.py',
+        'views.py (core & inventario)',
+        'core > views.py ➔ inventario > views.py',
         '⚡',
         'screenshot_code_views.png',
-        window_size='1100,580'
+        window_size='1100,760'
     )
 
-    # 5. Capture Templates (inventario/templates/inventario/index.html)
-    template_snippet = """<!-- inventario/templates/inventario/index.html - Herencia Dual y Marcado DTL -->
-{% extends 'base_admin.html' %}
+    # 5. Capture Templates (templates/home.html & templates/fruteria/tienda.html)
+    template_snippet = """<!-- templates/home.html - Enlaces Canónicos a Tienda y Catálogo El Paso Frutería -->
+{% extends 'base_cliente.html' %}
 
-{% block title %}Dashboard de Inventario | ADSO Gestión{% endblock title %}
+{% block title %}Inicio | Plataforma de Gestión ADSO{% endblock title %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
-    <div>
-        <h1 class="h2 fw-bold text-dark mb-1">{{ titulo }}</h1>
-        <p class="text-muted mb-0">{{ subtitulo }} | <span class="badge bg-secondary">{{ empresa }}</span></p>
-    </div>
-    <div>
-        <a href="/admin/inventario/producto/add/" class="btn btn-success shadow-sm">
-            <i class="bi bi-plus-circle me-1"></i>+ Registrar Producto
-        </a>
-    </div>
-</div>
-
-<!-- Tarjetas Métricas Dinámicas alimentadas desde el Contexto de la Vista -->
-<div class="row g-4 mb-4">
-    <div class="col-md-4">
-        <div class="card text-white bg-primary shadow-sm border-0">
-            <div class="card-body p-4">
-                <h6 class="card-title text-uppercase text-white-50">Total Productos</h6>
-                <div class="display-5 fw-bold">{{ total_productos }}</div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card text-white bg-warning shadow-sm border-0">
-            <div class="card-body p-4">
-                <h6 class="card-title text-uppercase text-dark-50 text-dark">Bajo Stock</h6>
-                <div class="display-5 fw-bold text-dark">{{ bajo_stock }}</div>
+<div class="row align-items-center mb-5">
+    <div class="col-lg-7">
+        <div class="p-4 p-md-5 bg-white rounded-3 shadow-sm border">
+            <span class="badge bg-primary-subtle text-primary mb-2 px-3 py-2 fw-semibold">
+                SENA - Regional Boyacá | ADSO 3321349
+            </span>
+            <h1 class="display-5 fw-bold text-dark mb-3">{{ nombre_empresa }}</h1>
+            <p class="lead text-secondary mb-4">{{ lema }}</p>
+            <p class="text-muted">{{ descripcion }}</p>
+            
+            <!-- Botones de Acción integrados hacia El Paso Frutería e Inventario -->
+            <div class="d-flex flex-wrap gap-2 mt-4">
+                <a href="/tienda/" class="btn btn-success btn-lg px-4 shadow">
+                    <i class="bi bi-shop me-2"></i>Ir a Tienda El Paso
+                </a>
+                <a href="/catalogo-frutas/" class="btn btn-warning btn-lg px-4 shadow text-dark fw-semibold">
+                    <i class="bi bi-basket me-2"></i>Ver Catálogo Frutas
+                </a>
+                <a href="/inventario/" class="btn btn-outline-primary btn-lg px-4">
+                    <i class="bi bi-speedometer2 me-2"></i>Panel Administrativo
+                </a>
             </div>
         </div>
     </div>
@@ -382,8 +321,8 @@ def dashboard_inventario(request):
     generate_capture(
         template_snippet,
         HtmlDjangoLexer(),
-        'index.html',
-        'inventario > templates > inventario > index.html',
+        'home.html (El Paso Frutería Links)',
+        'templates > home.html',
         '🎨',
         'screenshot_code_templates.png',
         window_size='1100,720'
