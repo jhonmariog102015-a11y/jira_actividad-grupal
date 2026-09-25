@@ -50,91 +50,15 @@ def create_terminal_capture():
 
 
 def create_vscode_tree_capture():
-    w, h = 1100, 650
-    img = Image.new('RGB', (w, h), color='#1e1e1e')
-    draw = ImageDraw.Draw(img)
-
-    # Header bar
-    draw.rectangle([(0, 0), (w, 36)], fill='#323233')
-    draw.ellipse([(14, 12), (24, 22)], fill='#ff5f56')
-    draw.ellipse([(32, 12), (42, 22)], fill='#ffbd2e')
-    draw.ellipse([(50, 12), (60, 22)], fill='#27c93f')
-    draw.text((w//2 - 140, 10), 'Visual Studio Code - Arquitectura Django & El Paso Fruteria', fill='#cccccc')
-
-    # Sidebar (Explorer)
-    draw.rectangle([(0, 36), (330, h)], fill='#252526')
-    draw.text((15, 48), 'EXPLORER: JIRA _ACTIVIDAD', fill='#bbbbbb')
-
-    tree_items = [
-        ('> .venv', '#858585', 1),
-        ('v core', '#569cd6', 1),
-        ('    settings.py', '#4ec9b0', 2),
-        ('    urls.py', '#4ec9b0', 2),
-        ('    views.py', '#4ec9b0', 2),
-        ('v inventario', '#569cd6', 1),
-        ('  > migrations', '#858585', 2),
-        ('  v templates > inventario', '#ce9178', 2),
-        ('      index.html', '#e5c07b', 3),
-        ('      > productos / lista.html', '#e5c07b', 3),
-        ('    models.py', '#4ec9b0', 2),
-        ('    urls.py', '#4ec9b0', 2),
-        ('    views.py', '#4ec9b0', 2),
-        ('v static', '#9cdcfe', 1),
-        ('  v css (frutas.css, opcion4.css)', '#cccccc', 2),
-        ('  v js (carrusel.js, catalogo.js)', '#cccccc', 2),
-        ('v templates', '#ce9178', 1),
-        ('  v fruteria', '#ce9178', 2),
-        ('    catalogo_frutas.html', '#ffd700', 3),
-        ('    tienda.html', '#ffd700', 3),
-        ('  base_admin.html', '#e5c07b', 2),
-        ('  base_cliente.html', '#e5c07b', 2),
-        ('  home.html', '#e5c07b', 2),
-        ('  manage.py', '#4fc1ff', 1),
-        ('  requirements.txt', '#858585', 1),
+    """Genera la captura hiperrealista de Visual Studio Code con el árbol de directorios real y editor."""
+    import subprocess
+    cmd = [
+        sys.executable,
+        os.path.join('scratch', 'render_realistic_vscode.py')
     ]
+    subprocess.run(cmd)
+    print('screenshot_vscode_tree.png generado exitosamente mediante renderizado nativo.')
 
-    y = 75
-    for item, col, lvl in tree_items:
-        draw.text((15 + (lvl-1)*12, y), item, fill=col)
-        y += 21
-
-    # Editor main area
-    draw.rectangle([(330, 36), (w, h)], fill='#1e1e1e')
-    # Editor tabs
-    draw.rectangle([(330, 36), (490, 68)], fill='#1e1e1e')
-    draw.rectangle([(490, 36), (650, 68)], fill='#2d2d2d')
-    draw.text((350, 46), 'core/urls.py', fill='#ffffff')
-    draw.text((510, 46), 'core/views.py', fill='#969696')
-
-    code_lines = [
-        ('# core/urls.py - Enrutador Maestro con Rutas de El Paso Fruteria', '#6a9955'),
-        ('from django.contrib import admin', '#569cd6'),
-        ('from django.urls import path, include', '#569cd6'),
-        ('from . import views', '#569cd6'),
-        ('', '#cccccc'),
-        ('urlpatterns = [', '#569cd6'),
-        ('    # Panel de administración predeterminado de Django', '#6a9955'),
-        ('    path(\'admin/\', admin.site.urls),', '#ce9178'),
-        ('    ', '#cccccc'),
-        ('    # Ruta pública raíz: Landing page para clientes y visitantes', '#6a9955'),
-        ('    path(\'\', views.home, name=\'home\'),', '#ce9178'),
-        ('    ', '#cccccc'),
-        ('    # Enrutamiento modular: delega rutas a la app \'inventario\'', '#6a9955'),
-        ('    path(\'inventario/\', include(\'inventario.urls\')),', '#4ec9b0'),
-        ('    ', '#cccccc'),
-        ('    # Rutas integradas del proyecto formativo El Paso Frutería', '#ffd700'),
-        ('    path(\'tienda/\', views.tienda_fruteria, name=\'tienda_fruteria\'),', '#ffd700'),
-        ('    path(\'catalogo-frutas/\', views.catalogo_frutas, name=\'catalogo_frutas\'),', '#ffd700'),
-        (']', '#569cd6'),
-    ]
-
-    y = 80
-    for line, col in code_lines:
-        draw.text((345, y), line, fill=col)
-        y += 22
-
-    img.save('screenshot_vscode_tree.png')
-    print('screenshot_vscode_tree.png generado exitosamente.')
 
 
 def create_mvt_diagram():
