@@ -14,11 +14,11 @@
 
 ## 📌 Descripción del Proyecto
 
-Este repositorio contiene la arquitectura base, configuración de enrutamiento modular y sistema dual de plantillas navegables desarrollado con el framework **Django 6.0** y **Bootstrap 5**, en estricto cumplimiento de los lineamientos del **Manual Técnico de Desarrollo Web con Django Parte I (Capítulos 1 al 3.9)** y la **Guía G-02**.
+Este repositorio contiene la arquitectura base, configuración de enrutamiento modular y sistema dual de plantillas navegables desarrollado con el framework **Django 6.0** y **Bootstrap 5**, en estricto cumplimiento de los lineamientos del **Manual Técnico de Desarrollo Web con Django Parte I (Capítulos 1 al 3.9)** y la **Guía G-02**, integrando además las interfaces visuales del proyecto formativo institucional **"El Paso Frutería"** (tienda comercial y catálogo dinámico con filtrado interactivo).
 
 Se incluye como entregable principal el documento técnico formal en formato PDF:
 📄 **`Informe_Tecnico_Arquitectura_Base_Django_APA7.pdf`**  
-*(23 páginas estructuradas bajo Normas APA 7.ª edición con portada, tabla de contenido, lista de tablas/figuras, análisis del debate GAES, mapas conceptuales MVT, código fuente explicado, capturas de pantalla de evidencia y referencias bibliográficas).*
+*(26 páginas estructuradas bajo Normas APA 7.ª edición con portada estudiantil, tabla de contenido dinámica, lista de tablas y 13 figuras, análisis del debate GAES, mapas conceptuales MVT, código fuente real capturado, capturas de navegación del prototipo y referencias bibliográficas).*
 
 ---
 
@@ -130,9 +130,11 @@ Una vez iniciado el servidor, abra su navegador web en las siguientes direccione
 
 | Ruta URL | Tipo de Interfaz | Plantilla Base Utilizada | Descripción |
 | :--- | :--- | :--- | :--- |
-| `http://127.0.0.1:8000/` | Pública (Clientes) | `base_cliente.html` | Página de bienvenida (Landing Page) con Bootstrap 5 |
-| `http://127.0.0.1:8000/inventario/` | Privada (Administración) | `base_admin.html` | Dashboard con tarjetas métricas y tabla de stock |
-| `http://127.0.0.1:8000/inventario/productos/` | Privada (Catálogo) | `base_admin.html` | Catálogo de existencias namespaced |
+| `http://127.0.0.1:8000/` | Pública (General) | `base_cliente.html` | Página de bienvenida (Landing Page) con Bootstrap 5 |
+| `http://127.0.0.1:8000/tienda/` | Pública (Comercial) | `templates/fruteria/tienda.html` | Tienda virtual "El Paso Frutería" con carrusel y ofertas |
+| `http://127.0.0.1:8000/catalogo-frutas/` | Pública (Catálogo) | `templates/fruteria/catalogo_frutas.html` | Catálogo interactivo con filtrado de frutas por categorías |
+| `http://127.0.0.1:8000/inventario/` | Privada (Administración) | `base_admin.html` | Dashboard con tarjetas métricas y tabla de stock de frutas |
+| `http://127.0.0.1:8000/inventario/productos/` | Privada (Catálogo Admin) | `base_admin.html` | Catálogo de existencias namespaced |
 | `http://127.0.0.1:8000/admin/` | Panel Django | Nativa Django (es-co) | Panel de administración con login y modelos |
 
 *Credenciales de superusuario para el panel `/admin/`:*  
@@ -148,7 +150,7 @@ Una vez iniciado el servidor, abra su navegador web en las siguientes direccione
 | **3.1 Reflexión Inicial** | Debate en GAES sobre modularidad vs. monolito y tolerancia a fallos. | Capítulo I del informe técnico PDF con análisis de acoplamiento débil y resiliencia. | ✅ 100% |
 | **3.2 Contextualización** | Diferencia Proyecto vs. App y Patrón de Arquitectura MVT. | Capítulo II del informe técnico PDF con diagrama de flujo, tablas comparativas y DTL. | ✅ 100% |
 | **3.3 Apropiación** | VENV, settings.py regional, app modular y herencia dual con Bootstrap 5. | Capítulo III del informe técnico PDF, código fuente documentado y repositorio Git. | ✅ 100% |
-| **3.4 Transferencia** | Servidor local navegable, prototipo funcional y evidencias con capturas. | Capítulo IV del informe técnico PDF con 8 figuras formales y ejecución 200 OK. | ✅ 100% |
+| **3.4 Transferencia** | Servidor local navegable, prototipo funcional y evidencias con capturas. | Capítulo IV del informe técnico PDF con 13 figuras formales y ejecución 200 OK. | ✅ 100% |
 
 ---
 

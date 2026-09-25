@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Frutas Frescas — El Paso Frutería</title>
+    <meta name="description" content="Catálogo completo de frutas frescas cultivadas directamente en el campo. Variedades cítricas, tropicales, berries, importadas y exóticas.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/frutas.css">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR DE ANUNCIOS -->
+    <div class="announcement-bar">
+        <p>🌿 Frescura que marca la diferencia &nbsp;|&nbsp; 📦 Calidad, frescura y precios bajos &nbsp;|&nbsp; 🚚 Envíos diarios en tu ciudad</p>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <header class="navbar">
+        <a href="opcion4.html" class="nav-brand">
+            <div class="brand-icon">EP</div>
+            <div>
+                <div class="brand-name">El Paso</div>
+                <div class="brand-tagline">Frutería</div>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="opcion4.html" class="nav-link">Inicio</a>
+            <a href="frutas.html" class="nav-link active">Frutas</a>
+            <a href="opcion4.html#categorias" class="nav-link">Verduras</a>
+            <a href="opcion4.html#negocios" class="nav-link">Negocios</a>
+            <a href="opcion4.html#nosotros" class="nav-link">Nosotros</a>
+        </nav>
+
+        <div class="nav-actions">
+            <button class="btn-nav-cart" id="cartToggleBtn" aria-label="Ver canasta de compra">
+                🛒 Mi Canasta <span class="cart-count-badge" id="cartBadge" style="display:none;">0</span>
+            </button>
+            <a href="https://api.whatsapp.com/send?phone=573001234567" target="_blank" class="btn-whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.847L0 24l6.335-1.512A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.868 0-3.618-.482-5.144-1.327l-.369-.214-3.76.897.944-3.659-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+                Pide por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- CABECERA DEL CATÁLOGO -->
+    <main class="catalog-hero">
+        <div class="catalog-breadcrumb">
+            <a href="opcion4.html">Inicio</a>
+            <span>/</span>
+            <span>Catálogo de Frutas</span>
+        </div>
+
+        <div class="catalog-header-grid">
+            <div>
+                <span class="catalog-eyebrow">
+                    <span class="pulse-dot"></span> Cosecha Directa • Sogamoso &amp; Región
+                </span>
+                <h1 class="catalog-title">Nuestras <span>Frutas</span></h1>
+                <p class="catalog-desc">Seleccionadas cada mañana de nuestros productores locales en su punto óptimo de maduración. Directo del campo a tu hogar.</p>
+            </div>
+
+            <!-- Buscador en tiempo real -->
+            <div class="search-box-wrapper">
+                <input type="text" id="fruitSearch" class="search-input" placeholder="Buscar fruta o finca de origen..." autocomplete="off">
+                <button id="clearSearch" class="clear-search-btn" title="Limpiar búsqueda">✕</button>
+            </div>
+        </div>
+
+        <!-- FILTROS POR PESTAÑAS (CHIPS) -->
+        <div class="filters-bar" role="tablist">
+            <span class="filter-label">Filtrar:</span>
+            <button class="filter-chip active" data-filter="all" role="tab">Todas</button>
+            <button class="filter-chip" data-filter="citricos" role="tab">Cítricos</button>
+            <button class="filter-chip" data-filter="tropicales" role="tab">Tropicales</button>
+            <button class="filter-chip" data-filter="berries" role="tab">Berries</button>
+            <button class="filter-chip" data-filter="importadas" role="tab">Importadas</button>
+            <button class="filter-chip" data-filter="exoticas" role="tab">Exóticas</button>
+        </div>
+
+        <!-- CONTADOR DE REFERENCIAS (IDÉNTICO AL DISEÑO DE REFERENCIA) -->
+        <div class="grid-header">
+            <h2>Frutas Disponibles</h2>
+            <span class="counter-text" id="contadorReferencias">MOSTRANDO 17 DE 17 REFERENCIAS</span>
+        </div>
+
+        <!-- CUADRÍCULA DE TARJETAS DE FRUTAS (17 REFERENCIAS) -->
+        <div class="fruits-grid" id="fruitsGrid">
+
+            <!-- 1. Aguacate Hass -->
+            <article class="fruit-card" data-id="aguacate-hass" data-categoria="tropicales">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=400&auto=format&fit=crop" alt="Aguacate Hass" loading="lazy">
+                            <span class="fruit-card-emoji">🥑</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Tropicales</span>
+                    <h3>Aguacate Hass</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 2 días • Finca El Rosal</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$2.500</span>
+                        <span class="price-unit">desde / kg</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Aguacate Hass">＋</button>
+                </div>
+            </article>
+
+            <!-- 2. Fresa Premium -->
+            <article class="fruit-card" data-id="fresa-premium" data-categoria="berries">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=400&auto=format&fit=crop" alt="Fresa Premium" loading="lazy">
+                            <span class="fruit-card-emoji">🍓</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Berries</span>
+                    <h3>Fresa Premium</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hoy • Finca Las Delicias</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$11.450</span>
+                        <span class="price-unit">desde / lb</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Fresa Premium">＋</button>
+                </div>
+            </article>
+
+            <!-- 3. Arándano -->
+            <article class="fruit-card" data-id="arandano" data-categoria="berries">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?q=80&w=400&auto=format&fit=crop" alt="Arándano" loading="lazy">
+                            <span class="fruit-card-emoji">🫐</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Berries</span>
+                    <h3>Arándano</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 1 día • Finca La Sierra</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$7.550</span>
+                        <span class="price-unit">caja / und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Arándano">＋</button>
+                </div>
+            </article>
+
+            <!-- 4. Mango Tommy -->
+            <article class="fruit-card" data-id="mango-tommy" data-categoria="tropicales">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=400&auto=format&fit=crop" alt="Mango Tommy" loading="lazy">
+                            <span class="fruit-card-emoji">🥭</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Tropicales</span>
+                    <h3>Mango Tommy</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 2 días • Finca El Palmar</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$5.150</span>
+                        <span class="price-unit">und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Mango Tommy">＋</button>
+                </div>
+            </article>
+
+            <!-- 5. Naranja Valencia -->
+            <article class="fruit-card" data-id="naranja-valencia" data-categoria="citricos">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?q=80&w=400&auto=format&fit=crop" alt="Naranja Valencia" loading="lazy">
+                            <span class="fruit-card-emoji">🍊</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Cítricos</span>
+                    <h3>Naranja Valencia</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hoy • Finca El Naranjal</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$1.200</span>
+                        <span class="price-unit">desde / kg</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Naranja Valencia">＋</button>
+                </div>
+            </article>
+
+            <!-- 6. Limón Tahití -->
+            <article class="fruit-card" data-id="limon-tahiti" data-categoria="citricos">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1533082606337-4cb695d1609e?q=80&w=400&auto=format&fit=crop" alt="Limón Tahití" loading="lazy">
+                            <span class="fruit-card-emoji">🍋</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Cítricos</span>
+                    <h3>Limón Tahití</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 1 día • Finca Los Limoneros</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$4.150</span>
+                        <span class="price-unit">desde / lb</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Limón Tahití">＋</button>
+                </div>
+            </article>
+
+            <!-- 7. Kiwi -->
+            <article class="fruit-card" data-id="kiwi" data-categoria="importadas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1585059895524-72359e06133a?q=80&w=400&auto=format&fit=crop" alt="Kiwi" loading="lazy">
+                            <span class="fruit-card-emoji">🥝</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Importadas</span>
+                    <h3>Kiwi</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 3 días • Importado de Chile</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$1.690</span>
+                        <span class="price-unit">desde / und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Kiwi">＋</button>
+                </div>
+            </article>
+
+            <!-- 8. Uva Roja Importada -->
+            <article class="fruit-card" data-id="uva-roja" data-categoria="importadas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1596363505818-4cafc71de434?q=80&w=400&auto=format&fit=crop" alt="Uva Roja Importada" loading="lazy">
+                            <span class="fruit-card-emoji">🍇</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Importadas</span>
+                    <h3>Uva Roja Importada</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 4 días • Importado de Perú</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$14.350</span>
+                        <span class="price-unit">desde / lb</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Uva Roja Importada">＋</button>
+                </div>
+            </article>
+
+            <!-- 9. Piña Golden -->
+            <article class="fruit-card" data-id="pina-golden" data-categoria="tropicales">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?q=80&w=400&auto=format&fit=crop" alt="Piña Golden" loading="lazy">
+                            <span class="fruit-card-emoji">🍍</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Tropicales</span>
+                    <h3>Piña Golden</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 2 días • Finca El Piñal</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$8.550</span>
+                        <span class="price-unit">und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Piña Golden">＋</button>
+                </div>
+            </article>
+
+            <!-- 10. Papaya Maradol -->
+            <article class="fruit-card" data-id="papaya-maradol" data-categoria="tropicales">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1517282009859-f000ec3b26fe?q=80&w=400&auto=format&fit=crop" alt="Papaya Maradol" loading="lazy">
+                            <span class="fruit-card-emoji">🍈</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Tropicales</span>
+                    <h3>Papaya Maradol</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hoy • Finca El Trópico</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$6.750</span>
+                        <span class="price-unit">und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Papaya Maradol">＋</button>
+                </div>
+            </article>
+
+            <!-- 11. Sandía -->
+            <article class="fruit-card" data-id="sandia" data-categoria="tropicales">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?q=80&w=400&auto=format&fit=crop" alt="Sandía" loading="lazy">
+                            <span class="fruit-card-emoji">🍉</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Tropicales</span>
+                    <h3>Sandía</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 1 día • Finca La Llanura</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$16.900</span>
+                        <span class="price-unit">und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Sandía">＋</button>
+                </div>
+            </article>
+
+            <!-- 12. Manzana Verde Importada -->
+            <article class="fruit-card" data-id="manzana-verde" data-categoria="importadas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1619546813926-a78fa6372cd2?q=80&w=400&auto=format&fit=crop" alt="Manzana Verde Importada" loading="lazy">
+                            <span class="fruit-card-emoji">🍏</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Importadas</span>
+                    <h3>Manzana Verde Importada</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 5 días • Importado de Argentina</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$2.550</span>
+                        <span class="price-unit">und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Manzana Verde Importada">＋</button>
+                </div>
+            </article>
+
+            <!-- 13. Gulupa -->
+            <article class="fruit-card" data-id="gulupa" data-categoria="exoticas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=400&auto=format&fit=crop" alt="Gulupa" loading="lazy">
+                            <span class="fruit-card-emoji">🍇</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Exóticas</span>
+                    <h3>Gulupa</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hoy • Finca La Montaña</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$4.290</span>
+                        <span class="price-unit">desde / lb</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Gulupa">＋</button>
+                </div>
+            </article>
+
+            <!-- 14. Lulo -->
+            <article class="fruit-card" data-id="lulo" data-categoria="exoticas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1568584711075-3d021a7c3ca3?q=80&w=400&auto=format&fit=crop" alt="Lulo" loading="lazy">
+                            <span class="fruit-card-emoji">🟠</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Exóticas</span>
+                    <h3>Lulo</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 1 día • Finca El Valle</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$4.390</span>
+                        <span class="price-unit">desde / lb</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Lulo">＋</button>
+                </div>
+            </article>
+
+            <!-- 15. Uchuva -->
+            <article class="fruit-card" data-id="uchuva" data-categoria="exoticas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=400&auto=format&fit=crop" alt="Uchuva" loading="lazy">
+                            <span class="fruit-card-emoji">🟡</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Exóticas</span>
+                    <h3>Uchuva</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 2 días • Finca El Sol</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$2.250</span>
+                        <span class="price-unit">desde / lb</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Uchuva">＋</button>
+                </div>
+            </article>
+
+            <!-- 16. Pitahaya Dragón Fruit -->
+            <article class="fruit-card" data-id="pitahaya" data-categoria="exoticas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1527325678964-54921661f888?q=80&w=400&auto=format&fit=crop" alt="Pitahaya" loading="lazy">
+                            <span class="fruit-card-emoji">🐉</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Exóticas</span>
+                    <h3>Pitahaya Dragón Fruit</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hoy • Finca El Jardín</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$9.850</span>
+                        <span class="price-unit">desde / und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Pitahaya Dragón Fruit">＋</button>
+                </div>
+            </article>
+
+            <!-- 17. Durazno Importado -->
+            <article class="fruit-card" data-id="durazno" data-categoria="importadas">
+                <div>
+                    <div class="card-top">
+                        <div class="fruit-visual">
+                            <img src="https://images.unsplash.com/photo-1629828874514-c1e5103f2150?q=80&w=400&auto=format&fit=crop" alt="Durazno Importado" loading="lazy">
+                            <span class="fruit-card-emoji">🍑</span>
+                        </div>
+                        <span class="badge-fresco"><span class="dot"></span>fresco</span>
+                    </div>
+                    <span class="fruit-category">Importadas</span>
+                    <h3>Durazno Importado</h3>
+                    <p class="fruit-origin">🌱 Cosecha: Hace 3 días • Importado de Chile</p>
+                </div>
+                <div class="fruit-price-row">
+                    <div class="price-container">
+                        <span class="price-val">$3.850</span>
+                        <span class="price-unit">desde / und</span>
+                    </div>
+                    <button class="add-btn" aria-label="Añadir Durazno Importado">＋</button>
+                </div>
+            </article>
+
+            <!-- Mensaje si no se encuentran frutas -->
+            <div id="noResultsMsg" class="no-results">
+                <div class="no-results-icon">🔍</div>
+                <h3>No se encontraron frutas</h3>
+                <p>Intenta con otro término de búsqueda o selecciona otra categoría.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- DRAWER DEL CARRITO DE COMPRAS -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Canasta de compra">
+        <div class="cart-drawer-header">
+            <h3>🛒 Mi Canasta de Frutas</h3>
+            <button class="close-cart-btn" id="closeCartBtn" aria-label="Cerrar canasta">✕</button>
+        </div>
+        <div class="cart-drawer-body">
+            <div id="cartEmptyMessage" class="cart-empty-msg">
+                <span>🧺</span>
+                <p>Tu canasta está vacía.</p>
+                <small style="color:var(--text-muted); display:block; margin-top:0.4rem;">Agrega tus frutas favoritas con el botón (+)</small>
+            </div>
+            <div id="cartItemsList"></div>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total-row">
+                <span>Total Estimado:</span>
+                <strong id="cartTotalAmount">$0</strong>
+            </div>
+            <button class="btn-whatsapp-order disabled" id="btnSendWhatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.847L0 24l6.335-1.512A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.868 0-3.618-.482-5.144-1.327l-.369-.214-3.76.897.944-3.659-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+                Pedir por WhatsApp
+            </button>
+        </div>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="nav-brand">
+            <div class="brand-icon">EP</div>
+            <div>
+                <div class="brand-name">El Paso</div>
+                <div class="brand-tagline">Frutería</div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 El Paso Frutería — Calidad, frescura y sabor directo de los mejores campos.</p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="js/catalogo.js"></script>
+</body>
+
+</html>

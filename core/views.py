@@ -30,3 +30,23 @@ def admin_preview(request):
     if user:
         request.user = user
     return admin.site.index(request)
+
+
+def tienda_fruteria(request):
+    """
+    Vista de la tienda virtual de El Paso Frutería (Diseño 4: mercado multi).
+    """
+    contexto = {
+        'titulo': 'El Paso Frutería — Mercado Virtual',
+    }
+    return render(request, 'fruteria/tienda.html', contexto)
+
+
+def catalogo_frutas(request):
+    """
+    Vista del catálogo especializado de frutas frescas de El Paso Frutería.
+    """
+    contexto = {
+        'titulo': 'Catálogo de Frutas Frescas — El Paso Frutería',
+    }
+    return render(request, 'fruteria/catalogo_frutas.html', contexto)

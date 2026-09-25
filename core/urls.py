@@ -18,6 +18,10 @@ urlpatterns = [
     # Enrutamiento modular: delega las rutas hacia la aplicación 'inventario'
     path('inventario/', include('inventario.urls')),
     
+    # Rutas integradas del proyecto formativo El Paso Frutería
+    path('tienda/', views.tienda_fruteria, name='tienda_fruteria'),
+    path('catalogo-frutas/', views.catalogo_frutas, name='catalogo_frutas'),
+    
     # Vista de previsualización autenticada para evidencias del panel Django
     path('admin-preview/', views.admin_preview, name='admin_preview'),
 ]

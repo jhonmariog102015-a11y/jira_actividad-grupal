@@ -1,0 +1,453 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Paso Frutería — Diseño 4: mercado multi</title>
+    <meta name="description" content="El Paso Frutería — Frutas y verduras frescas directas del campo a tu mesa.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/opcion4.css' %}">
+</head>
+
+<body>
+
+    <!-- BARRA SUPERIOR DE ANUNCIOS -->
+    <div class="announcement-bar">
+        <p>🌿 Frescura que marca la diferencia &nbsp;|&nbsp; 📦 Calidad frescura y precios bajos</p>
+    </div>
+
+    <!-- NAVEGACIÓN -->
+    <header class="navbar">
+        <a href="/tienda/" class="nav-brand" style="text-decoration:none;">
+            <div class="brand-icon">EP</div>
+            <div>
+                <div class="brand-name">El Paso</div>
+                <div class="brand-tagline">Frutería</div>
+            </div>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/" class="nav-link" style="color:#ffc107; font-weight:700;">Inicio ADSO</a>
+            <a href="/inventario/" class="nav-link" style="color:#28a745; font-weight:700;">Panel Admin</a>
+            <a href="/tienda/" class="nav-link active">Inicio</a>
+            <a href="/catalogo-frutas/" class="nav-link">Frutas</a>
+            <a href="#categorias" class="nav-link">Verduras</a>
+            <a href="#nosotros" class="nav-link">Nosotros</a>
+            <a href="/catalogo-frutas/" class="nav-link">Catálogo</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="https://api.whatsapp.com/send?phone=573001234567" target="_blank" class="btn-whatsapp" style="text-decoration:none;">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+                    <path
+                        d="M12 0C5.373 0 0 5.373 0 12c0 2.124.555 4.118 1.528 5.847L0 24l6.335-1.512A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.868 0-3.618-.482-5.144-1.327l-.369-.214-3.76.897.944-3.659-.24-.383A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" />
+                </svg>
+                Pide por WhatsApp
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO PRINCIPAL -->
+    <section class="hero">
+        <div class="hero-image-container">
+            <img src="https://images.unsplash.com/photo-1506484381205-f7945653044d?q=80&w=1600&auto=format&fit=crop"
+                alt="Mercado de frutas y verduras">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow">Frescura que marca la diferencia</p>
+            <h1 class="hero-title">Del campo a<br>tu <span class="highlight-text">mesa</span>,<br>hoy mismo.</h1>
+            <p class="hero-desc">Frutas y verduras de temporada, seleccionadas cada mañana en las mejores fincas de la
+                región.</p>
+            <div class="hero-cta">
+                <a href="/catalogo-frutas/" class="btn-main">Ver Catálogo de Frutas</a>
+                <a href="#carrusel-frutas" class="btn-secondary">Explorar Frutas Frescas ↓</a>
+            </div>
+            <div class="hero-badges">
+                <span>✓ 100% Natural</span>
+                <span>✓ Cosecha diaria</span>
+                <span>✓ Sin intermediarios</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORÍAS TIPO TABLERO -->
+    <section class="categories" id="categorias">
+        <div class="section-header">
+            <p class="section-label">LO QUE TENEMOS</p>
+            <h2>Categorías de<br>Productos</h2>
+        </div>
+
+        <div class="cat-grid">
+            <a href="/catalogo-frutas/" class="cat-card cat-frutas">
+                <div class="cat-img">
+                    <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?q=80&w=600&auto=format&fit=crop"
+                        alt="Frutas">
+                </div>
+                <div class="cat-info">
+                    <span class="cat-icon">🍊</span>
+                    <h3>Frutas</h3>
+                    <p>Ver 17 referencias →</p>
+                </div>
+            </a>
+            <a href="#carrusel-frutas" class="cat-card cat-verduras">
+                <div class="cat-img">
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600&auto=format&fit=crop"
+                        alt="Verduras">
+                </div>
+                <div class="cat-info">
+                    <span class="cat-icon">🥦</span>
+                    <h3>Verduras</h3>
+                    <p>Ver productos</p>
+                </div>
+            </a>
+            <a href="#carrusel-frutas" class="cat-card cat-tuberculos">
+                <div class="cat-img">
+                    <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?q=80&w=600&auto=format&fit=crop"
+                        alt="Tubérculos">
+                </div>
+                <div class="cat-info">
+                    <span class="cat-icon">🥔</span>
+                    <h3>Tubérculos</h3>
+                    <p>Ver productos</p>
+                </div>
+            </a>
+            <a href="#carrusel-frutas" class="cat-card cat-hortalizas">
+                <div class="cat-img">
+                    <img src="https://images.unsplash.com/photo-1498579397066-22750a3cb424?q=80&w=600&auto=format&fit=crop"
+                        alt="Hortalizas">
+                </div>
+                <div class="cat-info">
+                    <span class="cat-icon">🌿</span>
+                    <h3>Hortalizas</h3>
+                    <p>Ver productos</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CARRUSEL DE FRUTAS CON PESTAÑAS (NUEVO) -->
+    <section class="fruits-carousel-section" id="carrusel-frutas">
+        <div class="carousel-header-wrap">
+            <div class="carousel-header-left">
+                <span class="section-label">SELECCIÓN DEL DÍA</span>
+                <h2>Frutas Frescas de <span>Temporada</span></h2>
+            </div>
+            <a href="/catalogo-frutas/" class="btn-view-all-fruits">
+                Ver catálogo completo (17 referencias) →
+            </a>
+        </div>
+
+        <!-- Pestañas de categorías del carrusel -->
+        <div class="carousel-tabs-bar" role="tablist">
+            <button class="carousel-tab active" data-filter="all" role="tab">✨ Todas las Frutas</button>
+            <button class="carousel-tab" data-filter="citricos" role="tab">🍊 Cítricos</button>
+            <button class="carousel-tab" data-filter="tropicales" role="tab">🥑 Tropicales</button>
+            <button class="carousel-tab" data-filter="berries" role="tab">🍓 Berries</button>
+            <button class="carousel-tab" data-filter="importadas" role="tab">🥝 Importadas</button>
+            <button class="carousel-tab" data-filter="exoticas" role="tab">🐉 Exóticas</button>
+        </div>
+
+        <!-- Contenedor del Carrusel Deslizante -->
+        <div class="carousel-outer">
+            <button class="carousel-nav-btn carousel-prev" id="carouselPrev" aria-label="Anterior">‹</button>
+            <button class="carousel-nav-btn carousel-next" id="carouselNext" aria-label="Siguiente">›</button>
+
+            <div class="carousel-track" id="fruitCarouselTrack">
+
+                <!-- 1. Aguacate Hass -->
+                <div class="carousel-card" data-categoria="tropicales">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=600&auto=format&fit=crop" alt="Aguacate Hass" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🥑</span>
+                        </div>
+                        <span class="carousel-card-cat">Tropicales</span>
+                        <h3>Aguacate Hass</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hace 2 días • Finca El Rosal</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$2.500</span>
+                            <span class="carousel-unit">desde / kg</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Aguacate Hass" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 2. Fresa Premium -->
+                <div class="carousel-card" data-categoria="berries">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=600&auto=format&fit=crop" alt="Fresa Premium" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🍓</span>
+                        </div>
+                        <span class="carousel-card-cat">Berries</span>
+                        <h3>Fresa Premium</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hoy • Finca Las Delicias</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$11.450</span>
+                            <span class="carousel-unit">desde / lb</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Fresa Premium" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 3. Arándano -->
+                <div class="carousel-card" data-categoria="berries">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1498557850523-fd3d118b962e?q=80&w=600&auto=format&fit=crop" alt="Arándano" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🫐</span>
+                        </div>
+                        <span class="carousel-card-cat">Berries</span>
+                        <h3>Arándano</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hace 1 día • Finca La Sierra</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$7.550</span>
+                            <span class="carousel-unit">caja / und</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Arándano" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 4. Mango Tommy -->
+                <div class="carousel-card" data-categoria="tropicales">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1553279768-865429fa0078?q=80&w=600&auto=format&fit=crop" alt="Mango Tommy" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🥭</span>
+                        </div>
+                        <span class="carousel-card-cat">Tropicales</span>
+                        <h3>Mango Tommy</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hace 2 días • Finca El Palmar</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$5.150</span>
+                            <span class="carousel-unit">und</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Mango Tommy" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 5. Naranja Valencia -->
+                <div class="carousel-card" data-categoria="citricos">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?q=80&w=600&auto=format&fit=crop" alt="Naranja Valencia" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🍊</span>
+                        </div>
+                        <span class="carousel-card-cat">Cítricos</span>
+                        <h3>Naranja Valencia</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hoy • Finca El Naranjal</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$1.200</span>
+                            <span class="carousel-unit">desde / kg</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Naranja Valencia" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 6. Limón Tahití -->
+                <div class="carousel-card" data-categoria="citricos">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1533082606337-4cb695d1609e?q=80&w=600&auto=format&fit=crop" alt="Limón Tahití" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🍋</span>
+                        </div>
+                        <span class="carousel-card-cat">Cítricos</span>
+                        <h3>Limón Tahití</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hace 1 día • Finca Los Limoneros</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$4.150</span>
+                            <span class="carousel-unit">desde / lb</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Limón Tahití" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 7. Kiwi -->
+                <div class="carousel-card" data-categoria="importadas">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1585059895524-72359e06133a?q=80&w=600&auto=format&fit=crop" alt="Kiwi" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🥝</span>
+                        </div>
+                        <span class="carousel-card-cat">Importadas</span>
+                        <h3>Kiwi</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hace 3 días • Importado de Chile</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$1.690</span>
+                            <span class="carousel-unit">desde / und</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Kiwi" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 8. Pitahaya Dragón Fruit -->
+                <div class="carousel-card" data-categoria="exoticas">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1527325678964-54921661f888?q=80&w=600&auto=format&fit=crop" alt="Pitahaya" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🐉</span>
+                        </div>
+                        <span class="carousel-card-cat">Exóticas</span>
+                        <h3>Pitahaya Dragón</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hoy • Finca El Jardín</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$9.850</span>
+                            <span class="carousel-unit">desde / und</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Pitahaya Dragón" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 9. Gulupa -->
+                <div class="carousel-card" data-categoria="exoticas">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=600&auto=format&fit=crop" alt="Gulupa" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🍇</span>
+                        </div>
+                        <span class="carousel-card-cat">Exóticas</span>
+                        <h3>Gulupa Colombiana</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hoy • Finca La Montaña</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$4.290</span>
+                            <span class="carousel-unit">desde / lb</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Gulupa Colombiana" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+                <!-- 10. Uchuva -->
+                <div class="carousel-card" data-categoria="exoticas">
+                    <div>
+                        <div class="card-img-wrap">
+                            <img src="https://images.unsplash.com/photo-1589182373726-e4f658ab50f0?q=80&w=600&auto=format&fit=crop" alt="Uchuva" loading="lazy">
+                            <span class="badge-tag-fresh"><span class="dot"></span>Fresco</span>
+                            <span class="card-badge-emoji">🟡</span>
+                        </div>
+                        <span class="carousel-card-cat">Exóticas</span>
+                        <h3>Uchuva Andina</h3>
+                        <p class="carousel-card-origin">🌱 Cosecha: Hace 2 días • Finca El Sol</p>
+                    </div>
+                    <div class="carousel-card-footer">
+                        <div class="carousel-price-box">
+                            <span class="carousel-price">$2.250</span>
+                            <span class="carousel-unit">desde / lb</span>
+                        </div>
+                        <button class="btn-add-fruit" data-nombre="Uchuva Andina" title="Añadir a mi compra">＋</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Indicadores de puntos -->
+        <div class="carousel-dots-wrap" id="carouselDots"></div>
+    </section>
+
+    <!-- BLOQUE INFO + IMAGEN ASIMÉTRICA -->
+    <section class="about-strip" id="nosotros">
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=800&auto=format&fit=crop"
+                alt="Finca productora">
+            <div class="about-years-badge">+30<br><span>años</span></div>
+        </div>
+        <div class="about-content">
+            <p class="section-label">NUESTRA HISTORIA</p>
+            <h2>Una familia,<br>una promesa.</h2>
+            <p>Desde 1989 somos la frutería de referencia del barrio. No somos un supermercado: somos vecinos que
+                conocen el nombre de los agricultores que cultivan lo que llevas a tu casa.</p>
+            <div class="about-stats">
+                <div class="stat">
+                    <strong>+50</strong>
+                    <span>Fincas aliadas</span>
+                </div>
+                <div class="stat">
+                    <strong>6am</strong>
+                    <span>Hora de cosecha</span>
+                </div>
+                <div class="stat">
+                    <strong>0</strong>
+                    <span>Intermediarios</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HORARIO -->
+    <section class="schedule">
+        <div class="schedule-bg">
+            <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=1600&auto=format&fit=crop"
+                alt="Fondo mercado">
+            <div class="schedule-overlay"></div>
+        </div>
+        <div class="schedule-content">
+            <h2>Horario de Atención</h2>
+            <div class="schedule-grid">
+                <div class="schedule-item">
+                    <strong>Lunes — Sábado</strong>
+                    <p>6:30 AM — 6:00 PM</p>
+                </div>
+                <div class="divider">|</div>
+                <div class="schedule-item">
+                    <strong>Domingo</strong>
+                    <p>7:00 AM — 1:00 PM</p>
+                </div>
+            </div>
+            <a href="tel:+573001234567" class="schedule-phone">📞 Llámanos: 300 123 4567</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <div class="brand-icon">EP</div>
+            <div>
+                <div class="brand-name">El Paso</div>
+                <div class="brand-tagline">Frutería</div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 El Paso Frutería. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- SCRIPT CARRUSEL -->
+    <script src="{% static 'js/carrusel.js' %}"></script>
+</body>
+
+</html>

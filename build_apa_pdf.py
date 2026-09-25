@@ -295,10 +295,13 @@ def build_table_of_contents_elements(styles):
         ("Capítulo IV: Transferencia del Conocimiento - Prototipo y Evidencias (Actividad 3.4)", PAGE_REGISTRY.get('cap4', 21), True),
         ("    Puesta en Marcha y Verificación del Servidor Local", PAGE_REGISTRY.get('sec4_1', 21), False),
         ("    Evidencias Gráficas de Navegación Pública y Administrativa", PAGE_REGISTRY.get('sec4_2', 22), False),
-        ("    Repositorio Oficial en GitHub y Control de Versiones Git", PAGE_REGISTRY.get('sec4_3', 24), False),
-        ("    Criterios de Evaluación y Lista de Chequeo de la Guía G-02", PAGE_REGISTRY.get('sec4_4', 25), False),
-        ("Conclusiones", PAGE_REGISTRY.get('conclusiones', 26), False),
-        ("Referencias Bibliográficas", PAGE_REGISTRY.get('referencias', 27), False),
+        ("    Integración del Proyecto Formativo: Tienda Virtual y Catálogo de Frutas ('El Paso Frutería')", PAGE_REGISTRY.get('sec4_3', 23), False),
+        ("    Catálogo Interactivo y Filtrado Dinámico de Productos Frutícolas", PAGE_REGISTRY.get('sec4_4', 24), False),
+        ("    Gestión Administrativa del Inventario de Productos Frutícolas", PAGE_REGISTRY.get('sec4_5', 25), False),
+        ("    Repositorio Oficial en GitHub y Control de Versiones Git", PAGE_REGISTRY.get('sec4_6', 26), False),
+        ("    Criterios de Evaluación y Lista de Chequeo de la Guía G-02", PAGE_REGISTRY.get('sec4_7', 27), False),
+        ("Conclusiones", PAGE_REGISTRY.get('conclusiones', 27), False),
+        ("Referencias Bibliográficas", PAGE_REGISTRY.get('referencias', 28), False),
     ]
 
     table_rows = []
@@ -327,7 +330,7 @@ def build_list_of_tables_figures(styles):
         ("Tabla 2. Comparativa Técnica: Vistas Basadas en Funciones (FBV) vs. Clases (CBV)", PAGE_REGISTRY.get('tab2', 11)),
         ("Tabla 3. Herramientas y Sintaxis Esencial del Django Template Language (DTL)", PAGE_REGISTRY.get('tab3', 12)),
         ("Tabla 4. Filtros DTL más Utilizados en el Proyecto Formativo", PAGE_REGISTRY.get('tab4', 13)),
-        ("Tabla 5. Matriz de Criterios de Evaluación de la Guía de Aprendizaje G-02", PAGE_REGISTRY.get('tab5', 25)),
+        ("Tabla 5. Matriz de Criterios de Evaluación de la Guía de Aprendizaje G-02", PAGE_REGISTRY.get('tab5', 27)),
     ]
 
     figures_data = [
@@ -339,9 +342,11 @@ def build_list_of_tables_figures(styles):
         ("Figura 6. Código Fuente Real: Plantilla DTL con Herencia Dual en index.html", PAGE_REGISTRY.get('fig6', 20)),
         ("Figura 7. Consola Terminal con Entorno Virtual (.venv) y Servidor Django Activo", PAGE_REGISTRY.get('fig7', 21)),
         ("Figura 8. Interfaz Pública de Usuario basada en base_cliente.html y Bootstrap 5", PAGE_REGISTRY.get('fig8', 22)),
-        ("Figura 9. Dashboard Administrativo del Módulo de Inventario con base_admin.html", PAGE_REGISTRY.get('fig9', 23)),
-        ("Figura 10. Catálogo de Existencias con Namespacing de Plantillas en Django", PAGE_REGISTRY.get('fig10', 23)),
-        ("Figura 11. Panel Administrativo Nativo de Django con Modelos Registrados", PAGE_REGISTRY.get('fig11', 24)),
+        ("Figura 9. Interfaz Comercial de la Tienda de Frutas ('El Paso Frutería') en /tienda/", PAGE_REGISTRY.get('fig9', 23)),
+        ("Figura 10. Catálogo Interactivo y Filtrado de Frutas por Categoría en /catalogo-frutas/", PAGE_REGISTRY.get('fig10', 24)),
+        ("Figura 11. Dashboard Administrativo del Módulo de Inventario con Stock Frutícola", PAGE_REGISTRY.get('fig11', 25)),
+        ("Figura 12. Catálogo de Existencias con Namespacing de Plantillas en Django", PAGE_REGISTRY.get('fig12', 25)),
+        ("Figura 13. Panel Administrativo Nativo de Django con Modelos Registrados", PAGE_REGISTRY.get('fig13', 26)),
     ]
 
     t_rows = []
@@ -362,8 +367,8 @@ def build_list_of_tables_figures(styles):
     f_table = Table(f_rows, colWidths=[410, 58])
     f_table.setStyle(TableStyle([
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('BOTTOMPADDING', (0, 0), (-1, -1), 2),
-        ('TOPPADDING', (0, 0), (-1, -1), 2),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 1.5),
+        ('TOPPADDING', (0, 0), (-1, -1), 1.5),
         ('LEFTPADDING', (0, 0), (-1, -1), 0),
         ('RIGHTPADDING', (0, 0), (-1, -1), 0),
     ]))
@@ -484,14 +489,15 @@ def generate_pdf_story(styles):
         "la parametrización regional para Colombia (es-co, America/Bogota) en core/settings.py, la estructuración modular desacoplada "
         "mediante la función include() en core/urls.py e inventario/urls.py, el modelado relacional ORM en inventario/models.py, "
         "la lógica del controlador en inventario/views.py y la construcción visual con herencia dual de plantillas (base_cliente.html y base_admin.html) "
-        "con Bootstrap 5. Finalmente, se presentan las evidencias de ejecución del prototipo funcional en servidor local y el enlace de "
-        "control de versiones al repositorio oficial en GitHub.",
+        "con Bootstrap 5. Asimismo, se documenta la integración de los componentes visuales del proyecto formativo <b>'El Paso Frutería'</b> "
+        "(tienda virtual navegable y catálogo interactivo de frutas con filtrado reactivo) mediante el subsistema de archivos estáticos y plantillas DTL. "
+        "Finalmente, se presentan las evidencias de ejecución del prototipo funcional en servidor local y el enlace de control de versiones al repositorio oficial en GitHub.",
         styles['APAResumenTexto']
     ))
     story.append(Spacer(1, 14))
     story.append(Paragraph(
         "<b>Palabras clave:</b> Django, arquitectura MVT, modularidad, código fuente real, entorno virtual, herencia dual, DTL, "
-        "Bootstrap 5, enrutamiento, resiliencia de software, ADSO.",
+        "Bootstrap 5, El Paso Frutería, catálogo interactivo, enrutamiento, resiliencia de software, ADSO.",
         styles['APAPalabrasClave']
     ))
     story.append(PageBreak())
@@ -524,8 +530,9 @@ def generate_pdf_story(styles):
         "El presente informe técnico da respuesta exhaustiva y secuencial a las actividades de aprendizaje formuladas en la guía: "
         "la reflexión inicial sobre la modularidad en GAES, la contextualización teórica de los primeros tres capítulos del Manual "
         "Técnico de Desarrollo Web con Django Parte I, la implementación procedimental de la arquitectura en Visual Studio Code "
-        "<b>acompañada de capturas de pantalla reales del código fuente programado</b>, y la sustentación del prototipo funcional "
-        "evidenciado mediante capturas de ejecución y el control de versiones en GitHub.",
+        "<b>acompañada de capturas de pantalla reales del código fuente programado</b>, la integración de las interfaces frontend "
+        "del proyecto formativo 'El Paso Frutería' con su correspondiente catálogo dinámico de productos, y la sustentación del "
+        "prototipo funcional evidenciado mediante capturas de ejecución y el control de versiones en GitHub.",
         styles['APABody']
     ))
     story.append(PageBreak())
@@ -1043,27 +1050,97 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 23: DASHBOARD Y CATÁLOGO (FIGURAS 9 Y 10)
+    # PÁGINA 23: INTEGRACIÓN PROYECTO FORMATIVO "EL PASO FRUTERÍA" (FIGURA 9)
     # ==========================================
-    # Figura 9: Dashboard Inventario
+    story.append(PageBookmark('sec4_3'))
+    story.append(Paragraph("Integración del Proyecto Formativo: Tienda Virtual y Catálogo de Frutas ('El Paso Frutería')", styles['APANivel2']))
+    story.append(Paragraph(
+        "En consonancia con los objetivos del proyecto formativo institucional y los recursos frontend desarrollados "
+        "(archivos HTML modulares, hojas de estilos CSS personalizadas y lógica de interacción en JavaScript), "
+        "se realizó la integración técnica de la tienda comercial y del catálogo frutícola interactivo al ecosistema Django. "
+        "Para lograr un acoplamiento limpio sin alterar la modularidad, se ubicaron los recursos en <code>static/css/</code> "
+        "(incluyendo <code>opcion4.css</code> y <code>frutas.css</code>) y <code>static/js/</code> (<code>carrusel.js</code> y "
+        "<code>catalogo.js</code>). Las plantillas fueron organizadas en <code>templates/fruteria/tienda.html</code> y "
+        "<code>templates/fruteria/catalogo_frutas.html</code>, cargando los recursos estáticos mediante la etiqueta DTL "
+        "<code>{% load static %}</code> y enlazando dinámicamente las rutas canónicas <code>/tienda/</code> y "
+        "<code>/catalogo-frutas/</code> definidas en <code>core/urls.py</code>.",
+        styles['APABody']
+    ))
+
+    # Figura 9: Tienda Frutería
     story.append(PageBookmark('fig9'))
     story.extend(create_apa_figure(
         "Figura 9",
-        "Dashboard Administrativo del Módulo de Inventario con base_admin.html",
-        "screenshot_admin_dashboard.png",
-        440, 215,
-        "Pantalla del panel administrativo en http://127.0.0.1:8000/inventario/, exhibiendo el menú lateral (Sidebar), "
-        "tarjetas métricas con contadores dinámicos alimentados desde el ORM y tabla interactiva de existencias recientes.",
+        "Interfaz Comercial de la Tienda de Frutas ('El Paso Frutería') en /tienda/",
+        "screenshot_tienda_fruteria.png",
+        440, 250,
+        "Captura en alta resolución de la tienda comercial 'El Paso Frutería' en http://127.0.0.1:8000/tienda/, visualizando "
+        "el carrusel de promociones, tarjetas de productos destacados, navegación interactiva y diseño visual moderno "
+        "integrado bajo la arquitectura de plantillas y archivos estáticos de Django.",
         styles
     ))
 
-    # Figura 10: Catálogo de Productos
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 24: CATÁLOGO INTERACTIVO DE FRUTAS (FIGURA 10)
+    # ==========================================
+    story.append(PageBookmark('sec4_4'))
+    story.append(Paragraph("Catálogo Interactivo y Filtrado Dinámico de Productos Frutícolas", styles['APANivel2']))
+    story.append(Paragraph(
+        "Para ofrecer una experiencia de usuario (UX) óptima, el catálogo accesible en <code>/catalogo-frutas/</code> "
+        "organiza la oferta comercial en categorías especializadas (Cítricas, Tropicales, Frutos Rojos / Berries y Exóticas). "
+        "La interfaz incorpora filtrado reactivo en el lado del cliente y vinculación directa hacia el sistema de inventario, "
+        "permitiendo a los clientes explorar las existencias, consultar precios unitarios y visualizar la información nutricional.",
+        styles['APABody']
+    ))
+
+    # Figura 10: Catálogo Interactivo
     story.append(PageBookmark('fig10'))
     story.extend(create_apa_figure(
         "Figura 10",
+        "Catálogo Interactivo y Filtrado de Frutas por Categoría en /catalogo-frutas/",
+        "screenshot_catalogo_frutas.png",
+        440, 260,
+        "Pantalla del catálogo interactivo en http://127.0.0.1:8000/catalogo-frutas/, exhibiendo la grilla responsiva de frutas, "
+        "los selectores de categoría activos, los precios comerciales y la vinculación conceptual con el inventario del sistema.",
+        styles
+    ))
+
+    story.append(PageBreak())
+
+    # ==========================================
+    # PÁGINA 25: GESTIÓN ADMINISTRATIVA DEL INVENTARIO (FIGURAS 11 Y 12)
+    # ==========================================
+    story.append(PageBookmark('sec4_5'))
+    story.append(Paragraph("Gestión Administrativa del Inventario de Productos Frutícolas", styles['APANivel2']))
+    story.append(Paragraph(
+        "La capa administrativa del módulo <code>inventario</code> se alimentó con las categorías y existencias reales del dominio "
+        "comercial de frutas (Naranjas Valencia, Limón Tahití, Mangos, Piñas, Berries y Pitahayas). El panel central "
+        "(<code>/inventario/</code>) calcula métricas en tiempo real mediante el ORM (conteo total de existencias y alertas de "
+        "bajo stock para reabastecimiento), articulando la operación de trastienda con la tienda de cara al público.",
+        styles['APABody']
+    ))
+
+    # Figura 11: Dashboard Inventario
+    story.append(PageBookmark('fig11'))
+    story.extend(create_apa_figure(
+        "Figura 11",
+        "Dashboard Administrativo del Módulo de Inventario con Stock Frutícola",
+        "screenshot_admin_dashboard.png",
+        440, 200,
+        "Pantalla del panel administrativo en http://127.0.0.1:8000/inventario/, exhibiendo el menú lateral (Sidebar), "
+        "tarjetas métricas con contadores dinámicos alimentados desde el ORM y tabla interactiva de existencias de frutas.",
+        styles
+    ))
+
+    # Figura 12: Catálogo de Productos Administrativo
+    story.append(PageBookmark('fig12'))
+    story.extend(create_apa_figure(
+        "Figura 12",
         "Catálogo de Existencias con Namespacing de Plantillas en Django",
         "screenshot_admin_catalog.png",
-        440, 205,
+        440, 190,
         "Pantalla del catálogo en http://127.0.0.1:8000/inventario/productos/, evidenciando la resolución correcta de plantillas "
         "namespaced (inventario/productos/lista.html) heredadas de base_admin.html.",
         styles
@@ -1072,21 +1149,21 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 24: PANEL ADMIN DJANGO Y REPO GITHUB (FIGURA 11)
+    # PÁGINA 26: PANEL ADMIN DJANGO Y REPO GITHUB (FIGURA 13)
     # ==========================================
-    # Figura 11: Panel de Administración Nativo
-    story.append(PageBookmark('fig11'))
+    # Figura 13: Panel de Administración Nativo
+    story.append(PageBookmark('fig13'))
     story.extend(create_apa_figure(
-        "Figura 11",
+        "Figura 13",
         "Panel Administrativo Nativo de Django con Modelos Registrados",
         "screenshot_django_admin_auth.png",
-        440, 205,
+        440, 195,
         "Interfaz del panel nativo de administración en http://127.0.0.1:8000/admin/ autenticada con el superusuario del sistema, "
         "demostrando la administración directa de los modelos Categoria y Producto con estilos CSS oficiales completos.",
         styles
     ))
 
-    story.append(PageBookmark('sec4_3'))
+    story.append(PageBookmark('sec4_6'))
     story.append(Paragraph("Repositorio Oficial en GitHub y Control de Versiones Git", styles['APANivel2']))
     story.append(Paragraph(
         "Para garantizar la transparencia, reproducibilidad y trazabilidad técnica del desarrollo, el código fuente completo del "
@@ -1117,9 +1194,9 @@ def generate_pdf_story(styles):
     story.append(PageBreak())
 
     # ==========================================
-    # PÁGINA 25: MATRIZ DE CRITERIOS Y CONCLUSIONES
+    # PÁGINA 27: MATRIZ DE CRITERIOS Y CONCLUSIONES
     # ==========================================
-    story.append(PageBookmark('sec4_4'))
+    story.append(PageBookmark('sec4_7'))
     story.append(Paragraph("Criterios de Evaluación y Lista de Chequeo de la Guía G-02", styles['APANivel2']))
     story.append(Paragraph(
         "En la Tabla 5 se sintetizan los criterios e instrumentos de evaluación establecidos formalmente por el SENA en la Guía G-02, "
@@ -1136,9 +1213,9 @@ def generate_pdf_story(styles):
         [
             ["Aislamiento de Entorno", "Creación de entorno virtual VENV para gestión segura de librerías.", "Entorno .venv configurado, activado y documentado en requirements.txt.", "Aprobado (100%)"],
             ["Modularidad", "Estructuración de Apps independientes desacopladas de la raíz.", "Módulo 'inventario' creado con urls.py, forms.py, models.py y views.py.", "Aprobado (100%)"],
-            ["Enrutamiento", "Configuración de rutas con include() para interfaces públicas y privadas.", "core/urls.py delegando a inventario/urls.py con namespaces.", "Aprobado (100%)"],
-            ["Arquitectura Visual", "Motor de plantillas DTL y Bootstrap 5 con Herencia Dual.", "base_cliente.html y base_admin.html implementadas y navegables.", "Aprobado (100%)"],
-            ["Evidencias y Sustentación", "Repositorio GitHub y capturas reales de código y ejecución en informe APA 7.", "Informe técnico completo en PDF con 11 figuras y repositorio en GitHub.", "Aprobado (100%)"]
+            ["Enrutamiento", "Configuración de rutas con include() para interfaces públicas y privadas.", "core/urls.py delegando a inventario/urls.py y rutas canónicas a /tienda/ y /catalogo-frutas/.", "Aprobado (100%)"],
+            ["Arquitectura Visual", "Motor de plantillas DTL y Bootstrap 5 con Herencia Dual.", "base_cliente.html, base_admin.html y plantillas de frutería integradas.", "Aprobado (100%)"],
+            ["Evidencias y Sustentación", "Repositorio GitHub y capturas reales de código y ejecución en informe APA 7.", "Informe técnico completo en PDF con 13 figuras y repositorio en GitHub.", "Aprobado (100%)"]
         ],
         [85, 125, 185, 73],
         "Verificación formal de cumplimiento de la Lista de Chequeo según formato GFPI-F-135 V04 del SENA.",
@@ -1156,14 +1233,20 @@ def generate_pdf_story(styles):
         styles['APABody']
     ))
     story.append(Paragraph(
-        "2. El sistema de Herencia Dual (base_cliente.html y base_admin.html) en conjunto con Bootstrap 5 demostró ser una solución "
-        "altamente eficiente para resolver las exigencias visuales de múltiples perfiles de usuario, evitando la duplicidad de marcado HTML "
-        "y facilitando una navegación intuitiva y responsiva.",
+        "2. El sistema de Herencia Dual (base_cliente.html y base_admin.html) en conjunto con Bootstrap 5 y hojas de estilos especializadas "
+        "demostró ser una solución altamente eficiente para resolver las exigencias visuales de múltiples perfiles de usuario, evitando "
+        "la duplicidad de marcado HTML y facilitando una navegación intuitiva y responsiva.",
         styles['APABody']
     ))
     story.append(Paragraph(
         "3. La técnica de Namespacing en plantillas y el enrutamiento desacoplado mediante la función include() resuelven de raíz las "
         "colisiones de nombres en proyectos colaborativos, habilitando el desarrollo paralelo en equipos de trabajo mediante control de versiones.",
+        styles['APABody']
+    ))
+    story.append(Paragraph(
+        "4. La articulación práctica de las interfaces frontend del proyecto formativo ('El Paso Frutería') con el backend Django validó la "
+        "flexibilidad del motor DTL y del subsistema de archivos estáticos (Static Files), permitiendo la transición fluida desde maquetas "
+        "independientes hacia una aplicación web unificada, dinámica y lista para su evolución hacia transacciones de comercio electrónico.",
         styles['APABody']
     ))
 
